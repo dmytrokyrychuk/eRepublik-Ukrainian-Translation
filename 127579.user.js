@@ -63,7 +63,7 @@ if ($("body").attr("id")=="error"){
 			'<li><a href=\"http://www.erepublik.com/en/newspaper/the-ministry-of-culture-188570/1/" target="_blank">Міністерство Культури</a></li>'+
 			'<li><a href=\"http://www.erepublik.com/en/newspaper/national-news-ukraine-202889/1/" target="_blank">Національна Служба Новин</a></li>'+
 			'<li><a href=\"http://forum.erepublik.com.ua/" target="_blank">Форум української спільноти</a></li>'+
-			'<li><a href=\"http://www.google.com/url?q=http%3A%2F%2Ftinyurl.com%2Fchatmindem&sa=D&sntz=1&usg=AFQjCNGr-uPavOJE27io-e3T7YfWfNqaZA\" target="_blank">IRC-чат МінДему</a></li>');
+			'<li><a href=\"http://wiki.erepublik.com/index.php/Missions/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B0" target="_blank">Місії</a></li>');
 		// sidebar
 		var Explevel = $('#experienceTooltip > strong').eq(0).text();
 		var Exppoint = $('#experienceTooltip > strong').eq(1).text();
@@ -112,7 +112,7 @@ if ($("body").attr("id")=="error"){
 			// daily task
 			$('.column > .boxes.daily_tasks > h1').text('Щоденні дії');
 			$('.column > .boxes.daily_tasks > div > strong').text('Працюйте та тренуйтеся');
-			$('.column > .boxes.daily_tasks > div > a.blue_beauty').text('Мої місця');
+			$('.column > .boxes.daily_tasks > div > a.blue_beauty').text('Мої місця').attr("title","Мої місця");
 			$('.column > .boxes.daily_tasks > div > a.green_beauty').text('Винагорода');
 			// daily task pop-box
 			$('#daily_pop > h3').text('Щоденні дії');
@@ -531,7 +531,7 @@ if ($("body").attr("id")=="error"){
 				// other-box
 				$('#battle_loader > a.green_go').replaceText('Next battle','Наступний раунд');
 				$('#battle_end > a.green_go').text('Переглянути інші битви');
-				$('#collection_complete.bazooka_pop > strong').text('Гей, та ти ж зібрав брухту на РПГ!');
+				$('#collection_complete.bazooka_pop > strong').text('Агов, та ти ж зібрав брухту на РПГ!');
 				$("#collection_complete.bazooka_pop > a[title='Скласти РПГ']").text('Зібрати');
 				$("#timer > div > strong:contains('Are you')").text('Не заснув?');
 				$("#timer > div > a > span:contains('still here')").text('Та ні, лише позіхаю');
@@ -918,7 +918,7 @@ if ($("body").attr("id")=="error"){
 			if (document.location.toString().indexOf("/country/economy/")!==-1) {
 				
 				$("h2:exact('Country resources')").text("Ресурси");
-				$("h2:exact('Treasury')").text("Казна");
+				$("h2:exact('Treasury')").text("Скарбниця");
 				$("h2:exact('Country trading embargoes')").text("Торгові ембарго");
 				$("td:contains('This country can trade with any other country in eRepublik.')").text("Торгові ембарго відсутні.");
 				$("h2:exact('Taxes')").text("Податки");

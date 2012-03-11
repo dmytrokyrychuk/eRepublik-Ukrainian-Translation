@@ -11,25 +11,18 @@
 // @require        http://sizzlemctwizzle.com/updater.php?id=113187&days=3&uso
 // ==/UserScript==
 
-/* писанина
-*/
-
 	var lang = document.location.pathname.substr(1,2);
 	var host = document.location.hostname.split('.')[0];
-
-
 
 /* [function] $.exact('string'); http://blog.darkthread.net/post-2009-01-24-jquery-custom-selector.aspx  */
 	$.extend($.expr[":"], { exact: function(a, i, m) { return (a.textContent || a.innerText || jQuery(a).text() || '').toLowerCase() == m[3].toLowerCase(); } });
 
-/* Day1422 快完成最後的責任了，加油 @blackca 
- */
 
 if ($("body").attr("id")=="error"){
 	$("div.errtxt > p").replaceText("Occasionally there are a couple of things which we need to check or to implement in order make your experience in eRepublik more pleasant.","На жаль, у нас виникли проблеми. Ми старанно працюємо над їх вирішенням.");
 } else {
 	//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
-	// 共用區 Common strings
+	// Common strings
 	//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 		$('strong#foodText').css('font-family','Arial,Arial');
 		// header
@@ -98,7 +91,7 @@ if ($("body").attr("id")=="error"){
 	//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 	if (host==='www') {
 		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/	
-		// 首頁 www.erepublik.com/en
+		// www.erepublik.com/en
 		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 		if ((document.location.toString()=="http://www.erepublik.com/"+lang) || (document.location.toString().indexOf("?viewPost=")!==-1)) {
 			$('h1').css('font-family','Arial,Arial');
@@ -134,7 +127,6 @@ if ($("body").attr("id")=="error"){
 			$('#wall_master > h1').text('Новини');
 			$("li#show_friends_feed > a").text("Друзі");
 			//$("li#show_regiment_feed > a").click($("li#show_friends_feed > a").text("Друзі"));
-			
 			//$('#homepage_feed .column:eq(1) > h1:first').text('Стінка');
 			$('#citizen_feed form#wall_post > textarea#shout').text('Напишіть що-небудь');
 			$('#citizen_feed a.report').text('Поскаржитися');
@@ -143,8 +135,6 @@ if ($("body").attr("id")=="error"){
 			$("#citizen_feed a[trigger='reply']").text('Коментувати');
 			$("#citizen_feed a[trigger='post_like']").text('Підтримую');
 			$("#citizen_feed a[trigger='post_unlike']").text('Не підтримую');
-	//		$("#citizen_feed a[trigger='comment_like']").text('Підтримую');
-	//		$("#citizen_feed a[trigger='comment_unlike']").text('Не підтримую');
 			$("#citizen_feed span[trigger='add_comment']").text('Відправити');
 			$('#citizen_feed textarea.comment_reply_post').text('Коментувати');
 			$('#citizen_feed div.fake_input').text('Напишіть що-небудь');
@@ -162,64 +152,121 @@ if ($("body").attr("id")=="error"){
 			$('#articles > div > a.mbutton:eq(5) > span').text('Суспільство');
 			$('#articles > div > a.mbutton:eq(6) > span').text('Газети, на які Ви підписані');
 		};
-		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
-		// My Companies
-		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
-		if (document.location.toString().indexOf("/myCompanies")!==-1) {
-			//TODO my land
-			//Пріоритет тут!
-			$('h1').css('font-family','Arial,Arial');
-			$(".close").each(function(index) {
-			  $(this).attr("title","Закрити вікно");
-			  $(this).text("Закрити");
-			});
-			// employer
-			$(".employer > h4").text('Працедавець');
-			$(".required_health > em").text("Здоров'я");
-			$(".employer_salary > em:contains('Gross Salary')").text("Платня");
-			$(".employer_salary > em:contains('Tax')").text("Податок");
-			$("a#work.green_enlarged > span").text("Працювати");
-			$(".resign").text("Звільнитися").attr("title","Звільнитися");
-			// popup window
-			$("#work_results.solid_pop.details. > .content > .fixer > h1").text("Результати роботи");
-			$(".more_details > span").text("Показати деталі");
-			$(".more_details").attr("title","Показати деталі");
-			$(".details_holder > strong").text("Деталі");
-			//$(".hard_worker > p").repalceText("You have","Залишилось працювати ");
-			//$(".hard_worker > p > span").repalceText("days","днів");*/
-			// companies
-			$(".area > h4").replaceText("My companies","Мої компанії");
-			$("a#help_manage.helper").attr("href","http://www.erepublik.com/en/article/-smoef-beta--1957402/1/20").attr("target","_blank").attr("title","Дізнатися, як керувати своїми компаніями").text("Як керувати своїми компаніями?");
-			$(".warning_notice").text("Не вистачає грошей, щоб заплатити працівникам за один день.");
-			$(".c1 > strong").text("Компанії");
-			$(".c2 > strong").text("Працівники");
-			$(".c3 > strong").text("Працювати");
-			$(".heading > .c4 > strong").text("Ресурси");
-			$(".heading > .c5 > strong").text("Результат");
-			$(".grey_plastic.left_pos").attr("title","Заснувати компанію");
-			$(".grey_plastic.mid").attr("title","Продати/Знищити компанію");
-			$(".grey_plastic.right_pos").attr("title","Покращити/Понизити компанію");
-			$(".c2 > a").attr("title","Керувати працівниками");
-			$(".c4 > a").attr("title","Купити на ринку");
-			$(".employees_available > em").text("Призначено працівників");
-			$(".raw_materials > em").text("Ресурси");
-			$("#start_production > span").text("Працювати");
-		} else if (document.location.toString().indexOf("/training-grounds")!==-1){
-			$("h4").text("Тренувальні майданчики");
-			$(".c1 > strong").text("Майданчики");
-			$(".grey_plastic.left_pos").attr("title","Збудувати нові майданчики");
-			$(".grey_plastic.right_pos").attr("title","Покращити/понизити маданчики");
-			$(".heading > .c2 > strong").text("Тренуватися");
-			$(".heading > .c3 > strong").text("Ціна");
-			$(".heading > .c4 > strong").text("Отримаєш сили");
-			$("strong.raw_production:contains('Free')").text("Безкоштовно");
-			$(".required_health > em").text("Здоров'я");
-			$(".required_health > strong").attr("title","Необхідно здоров'я");
-			$(".gold_cost > em").text("Золото");
-			$(".gold_cost > strong").attr("title","Необхідно золота");
-			$("a#start_train.green_enlarged").html("<span>Тренуватися</span>").attr("title","Тренуватися");
-		}
-
+		if (document.location.toString().indexOf("/economy")!==-1){
+			//! www.erepublik.com/en/economy*
+			// Economy
+			$(".top_tabs > li > a.companies").attr("original-title","Компанії");
+			$(".top_tabs > li > a.training_grounds").attr("original-title","Тренувальні майданчики");
+			$(".top_tabs > li > a.storage").attr("original-title","Сховище");
+			$(".top_tabs > li > a.health_buildings").attr("original-title","Санаторії");	
+			//! www.erepublik.com/en/economy/myCompanies
+			// My Companies
+			if (document.location.toString().indexOf("/myCompanies")!==-1) {
+				//! www.erepublik.com/en/economy/myCompanies
+				// My Companies
+				$('h1').css('font-family','Arial,Arial');
+				$(".close").each(function(index) {
+				  $(this).attr("title","Закрити вікно");
+				  $(this).text("Закрити");
+				});
+				// employer
+				$(".employer > h4").text('Працедавець');
+				$(".required_health > em").text("Здоров'я");
+				$(".employer_salary > em:contains('Gross Salary')").text("Платня");
+				$(".employer_salary > em:contains('Tax')").text("Податок");
+				$("a#work.green_enlarged > span").text("Працювати");
+				$(".resign").text("Звільнитися").attr("title","Звільнитися");
+				// popup window
+				$("#work_results.solid_pop.details. > .content > .fixer > h1").text("Результати роботи");
+				$(".more_details > span").text("Показати деталі");
+				$(".more_details").attr("title","Показати деталі");
+				$(".details_holder > strong").text("Деталі");
+				//$(".hard_worker > p").repalceText("You have","Залишилось працювати ");
+				//$(".hard_worker > p > span").repalceText("days","днів");*/
+				// companies
+				$(".area > h4").replaceText("My companies","Мої компанії");
+				$("a#help_manage.helper").attr("href","http://www.erepublik.com/en/article/-smoef-beta--1957402/1/20").attr("target","_blank").attr("title","Дізнатися, як керувати своїми компаніями").text("Як керувати своїми компаніями?");
+				$(".warning_notice").text("Не вистачає грошей, щоб заплатити працівникам за один день.");
+				$(".c1 > strong").text("Компанії");
+				$(".c2 > strong").text("Працівники");
+				$(".c3 > strong").text("Працювати");
+				$(".heading > .c4 > strong").text("Ресурси");
+				$(".heading > .c5 > strong").text("Результат");
+				$(".grey_plastic.left_pos").attr("title","Заснувати компанію");
+				$(".grey_plastic.mid").attr("title","Продати/Знищити компанію");
+				$(".grey_plastic.right_pos").attr("title","Покращити/Понизити компанію");
+				$(".c2 > a").attr("title","Керувати працівниками");
+				$(".c4 > a").attr("title","Купити на ринку");
+				$(".employees_available > em").text("Призначено працівників");
+				$(".raw_materials > em").text("Ресурси");
+				$("#start_production > span").text("Працювати");
+			} else if (document.location.toString().indexOf("/training-grounds")!==-1){
+				//! www.erepublik.com/en/economy/training-grounds
+				// Training grounds
+				$("h4").text("Тренувальні майданчики");
+				$(".c1 > strong").text("Майданчики");
+				$(".grey_plastic.left_pos").attr("title","Збудувати нові майданчики");
+				$(".grey_plastic.right_pos").attr("title","Покращити/понизити маданчики");
+				$(".heading > .c2 > strong").text("Тренуватися");
+				$(".heading > .c3 > strong").text("Ціна");
+				$(".heading > .c4 > strong").text("Отримаєш сили");
+				$("strong.raw_production:contains('Free')").text("Безкоштовно");
+				$(".required_health > em").text("Здоров'я");
+				$(".required_health > strong").attr("title","Необхідно здоров'я");
+				$(".gold_cost > em").text("Золото");
+				$(".gold_cost > strong").attr("title","Необхідно золота");
+				$("a#start_train.green_enlarged").html("<span>Тренуватися</span>").attr("title","Тренуватися");
+			} else if (document.location.toString().indexOf("/inventory")!==-1) {
+				//! www.erepublik.com/en/economy/inventory
+				// Storage
+				$('#inventory_overview span').css('font-family','Arial,Arial');
+				$('#inventory_overview > a > strong').css('font-family','Arial,Arial');
+				// storage
+				$('.area.storage > h4').replaceText("Storage",'Сховище');
+				$('.area.storage > h4 > a').attr("title","Додати сховище");
+				$('#inventory_overview > h2:first > img.storage_tooltip').attr('title','Якщо Ви хочете збільшити ємність, побудуйте додаткові сховища.');
+				$('#inventory_overview > .items_holder > h4:eq(0)').text('Товар');
+				$('#inventory_overview > .items_holder > h4:eq(1)').text('Сировина');
+				$('#inventory_overview > .items_holder > h4:eq(2)').text('Зібрати РПГ');
+				$("ul.product_list > li:[industry='1'] > img").each(function() {$(this).attr("title","Споживання їжі відновлює ваше здоров'я")});
+				$("ul.product_list > li:[industry='2'] > img").each(function() {$(this).attr("title","Використання зброї збільшує завдавані вами пошкодження")});
+				$(".item_mask > ul > li:eq(0) > img").attr("title","Сировина, необхідна для виготовлення їжі");//should work, but it doesn't! wtf?
+				$(".item_mask > ul > li:eq(1) > img").attr("title","Сировина, необхідна для виготовлення зброї");//should work, but it doesn't! wtf?
+				$(".collection_list > ul > li:[title='Barrel']").attr('title','Труба');
+				$(".collection_list > ul > li:[title='Scope']").attr('title','Приціл');
+				$(".collection_list > ul > li:[title='M6A3 Rocket']").attr('title','Ракета');
+				$(".collection_list > ul > li:[title='Trigger Kit']").attr('title','Спусковий модуль');
+				$(".collection_list > ul > li:[title='Stock']").attr('title','Приклад');
+				$('.collection_list > a.assemble').text('Зібрати').attr('title','Скласти');
+				$('.collection_list > .bazooka > .details > strong').html('РПГ'+
+					'<img src="http://www.erepublik.com/images/modules/storage/info.png" alt="" class="storage_tooltip" original-title="Ви можете знайти ці деталі на полі бою або отримати як винагороду за виконання добового наказу.">');
+				$('.collection_list > .bazooka > .details > small').text('Один постріл - одне вбивство');
+				$('.collection_list > .bazooka > .details > p:eq(0)').attr('title','К-сть пострілів');
+				$('.collection_list > .bazooka > .details > p:eq(1)').attr('title','Пошкодження');
+				$('.collection_list > .bazooka > .details > p:eq(1) > span').text('10000 за постріл');
+				// control module
+				$('#inventory_overview > a.inventory_sell > strong').text('Продати');
+				$('#inventory_overview > a.inventory_sell > small').text('Продаж товарів на ринку');
+				$('#inventory_overview > a.inventory_buy > strong').text('Придбати');
+				$('#inventory_overview > a.inventory_buy > small').text('Придбати речі на ринку');
+				$('#sell_offers th.offers_product > strong').text('Товар');
+				$('#sell_offers th.offers_quantity > strong').text('Кількість');
+				$('#sell_offers th.offers_price > .relative > strong#converted').text('Ціна');
+				$('#sell_offers th.offers_market > .relative > strong').text('Ринок');
+				$('#sell_offers th.offers_market > .relative > small > a#buy_license').text('придбати ліцензію');
+				$('#sell_offers th.offers_action > a > span').text('Продати');
+				$('#sell_offers a.delete_offer').attr('title','Скасувати');
+				$('.buy_market_shell > a#buy_market_license > span').text('Придбати дозвіл на торгівлю');
+				$('.buy_market_shell > a#select_buy_license_country > span#buy_license_country_name').text('Оберіть країну');	
+			} else if (document.location.toString().indexOf("/health-expansions")!==-1) {
+				$(".area.health_buildings > h4").text("Санаторії");
+				$(".heading > .c1 > strong").text("Санаторії");
+				$(".heading > .c2 > strong").text("Бонус здоров'я");
+				$(".heading > .area_controls.c1 > div > a.grey_plastic").attr("title","Докупити санаторій");
+				$(".heading > .area_controls.c1 > div > a.grey_plastic.right_pos").attr("title","Апгрейдити таунцентр");
+				$(".required_health.min.c2 > em").text("Максимум здоров'я");
+			}
+		};
 		
 		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 		// 個人 www.erepublik.com/en/main/citizen
@@ -373,10 +420,11 @@ if ($("body").attr("id")=="error"){
 			$("table.info_message > tbody > tr > td:contains('You are not be able to request a new citizenship while being a congress member')").text('Ти не зможеш зрадити своїй країні, доки ти член Конгресу.');
 			$("table.info_message > tbody > tr > td:contains('You are not be able to request a new citizenship while being a party member')").text('Ти не зможеш зрадити своїй країні, доки ти член партії.');
 		};
-		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
-		// 通貨 www.erepublik.com/en/exchange
-		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
+		//! www.erepublik.com/en/exchange
+		// Exchange
 		if (document.location.toString().indexOf("/exchange")!==-1) {
+			//! www.erepublik.com/en/exchange
+			// Exchange
 			$('h1').css('font-family','Arial,Arial');
 			$("h1:contains('Monetary Market')").text('Валютний ринок');
 			//exchange_bar
@@ -402,50 +450,6 @@ if ($("body").attr("id")=="error"){
 			$(".create_form > .rate_title").text("Курс");
 			$("a#post_offer.blue_action").text("Зберегти");
 			$("div.box").text("Ви ще не створили жодної обмінної пропозиції");
-		};
-		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
-		// 倉庫 www.erepublik.com/en/economy/inventory
-		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
-		if (document.location.toString().indexOf("/economy/inventory")!==-1) {
-			$('#inventory_overview span').css('font-family','Arial,Arial');
-			$('#inventory_overview > a > strong').css('font-family','Arial,Arial');
-			// storage
-			$('#inventory_overview > h2:first > span').text('Сховище');
-			$('#inventory_overview > h2:first > img.storage_tooltip').attr('title','Якщо Ви хочете збільшити ємність, побудуйте додаткові сховища.');
-			$('#inventory_overview > .items_holder > h4:eq(0)').text('Товар');
-			$('#inventory_overview > .items_holder > h4:eq(1)').text('Сировина');
-			$('#inventory_overview > .items_holder > h4:eq(2)').text('Зібрати РПГ');
-			$(".collection_list > ul > li:[title='Barrel']").attr('title','Труба');
-			$(".collection_list > ul > li:[title='Scope']").attr('title','Приціл');
-			$(".collection_list > ul > li:[title='M6A3 Rocket']").attr('title','Ракета');
-			$(".collection_list > ul > li:[title='Trigger Kit']").attr('title','Спусковий модуль');
-			$(".collection_list > ul > li:[title='Stock']").attr('title','Приклад');
-			$('.collection_list > a.assemble').text('Зібрати');
-			$('.collection_list > a.assemble').attr('title','Скласти');
-			$('.collection_list > .bazooka > .details > strong').html('РПГ'+
-				'<img src="http://www.erepublik.com/images/modules/storage/info.png" alt="" class="storage_tooltip" original-title="Ви можете знайти ці деталі на полі бою або отримати як винагороду за виконання добового наказу.">');
-			$('.collection_list > .bazooka > .details > small').text('Один постріл - одне вбивство');
-			$('.collection_list > .bazooka > .details > p:eq(0)').attr('title','К-сть пострілів');
-			$('.collection_list > .bazooka > .details > p:eq(1)').attr('title','Пошкодження');
-			$('.collection_list > .bazooka > .details > p:eq(1) > span').text('10000 за постріл');
-			$('.collection_list > .toolbox > .details > strong').html('Інструменти'+
-				'<img src="http://www.erepublik.com/images/modules/storage/info.png" alt="" class="storage_tooltip" original-title="你可以在領域中發現這些收集品。生產原料會隨機拿到其中的組件，你可以收集並組裝它。">');
-			$('.collection_list > .toolbox > .details > small').text('原料の生産量を倍増する');
-			$('.collection_list > .toolbox > .details > p:eq(0)').attr('title','耐久度');
-			// control module
-			$('#inventory_overview > a.inventory_sell > strong').text('Продати');
-			$('#inventory_overview > a.inventory_sell > small').text('Продаж товарів на ринку');
-			$('#inventory_overview > a.inventory_buy > strong').text('Придбати');
-			$('#inventory_overview > a.inventory_buy > small').text('Придбати речі на ринку');
-			$('#sell_offers th.offers_product > strong').text('Товар');
-			$('#sell_offers th.offers_quantity > strong').text('Кількість');
-			$('#sell_offers th.offers_price > .relative > strong#converted').text('Ціна');
-			$('#sell_offers th.offers_market > .relative > strong').text('Ринок');
-			$('#sell_offers th.offers_market > .relative > small > a#buy_license').text('придбати ліцензію');
-			$('#sell_offers th.offers_action > a > span').text('Продати');
-			$('#sell_offers a.delete_offer').attr('title','Скасувати');
-			$('.buy_market_shell > a#buy_market_license > span').text('Придбати дозвіл на торгівлю');
-			$('.buy_market_shell > a#select_buy_license_country > span#buy_license_country_name').text('Оберіть країну');	
 		};
 		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 		// 戦争 www.erepublik.com/en/wars/
@@ -880,12 +884,12 @@ if ($("body").attr("id")=="error"){
 				$("table.error_message > tbody > tr > td:contains('Sorry, you need to have the same citizenship')").text('Вибачте, у Вас має бути таке ж громадянство.');
 				if (document.location.toString().indexOf("/group-list/")!==-1) {
 					//group-list
-					$('#members_holder > h3:first').text('Список бійців підрозділу');
+					$('#members_holder > h3').text('Список бійців підрозділу');
 				};
 			};
 		};
 		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
-		// 國家 www.erepublik.com/en/main/country/
+		// www.erepublik.com/en/main/country/
 		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 		if ((document.location.toString().indexOf("/country")!==-1) || (document.location.toString().indexOf("/law/")!==-1)) {
 			$('#filters > a.btn-filters-select.goleft').text('Країна');
@@ -1045,12 +1049,8 @@ if ($("body").attr("id")=="error"){
 	// 'economy.erepublik.com
 	//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 	} else if (host==='economy') {
-		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
-		// 市場 economy.erepublik.com/en/market/
-		//   - 二手 economy.erepublik.com/en/market/company/
-		//   - 就業 economy.erepublik.com/en/market/job/
-		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 		if (document.location.toString().indexOf("/market/")!==-1) {
+			// economy.erepublik.com/en/market/
 			$('h1').css('font-family','Arial,Arial');
 			$('h4').css('font-family','Arial,Arial');
 			// market
@@ -1067,12 +1067,6 @@ if ($("body").attr("id")=="error"){
 			$(".product_selector > ul > li.last > a > strong").text('Підприємства');
 			$("#filters_expanded > #minReq > h4:contains('Select quality')").text('Оберіть якість');
 			$("#filters_summary > .sactual > .sattr > small:exact('Health restore')").text('Відновлення здоров`я');
-			//$("#market > #container > #content > #marketplace > #filters_expanded.sholder > .product_selecror > ul > li > a[class='industrySelect']").click(function (){
-			//FIXME спливаюча підказка не працює
-			/*$("a[quality='1']").mouseover(function (){
-				$("#market > #container > #content > #marketplace > #product_tip > #tip_content > p > span > strong").text('Відновлення здоров`я');
-				
-			});//not checked*/
 			$("#filters_summary > .sactual > .sattr > small:exact('Fire Power')").text('Потужність');
 			$("#filters_summary > .sactual > .sattr > small:exact('Durability')").text('К-сть пострілів');
 			$("#filters_summary > .sactual > .sattr > small:exact('Health')").text('Здоров`я');
@@ -1094,13 +1088,17 @@ if ($("body").attr("id")=="error"){
 			$('#marketplace > table > tbody > tr > td.m_buy > a > span').text('Придбати');
 			$("table.info_message > tbody > tr > td:contains('There are no market offers matching you search.')").text('Пропозиції згідно Вашого запиту відсутні.');
 			if (document.location.toString().indexOf("/company/")!==-1) {
+				// economy.erepublik.com/en/market/company/
 				// company market
 				$("#marketplace > h1:contains('Companies for sale')").text("Підприємства на продаж");
 				$("#marketplace > div.companies_sale > h4:contains('Select company')").text('Оберіть підприємство');
 				$("#marketplace > table > thead > tr.m_mainh > th.m_product:contains('Company')").text('Підприємство');
 				$("table.error_message > tbody > tr > td:contains('You can not buy a company in a country for which you do not have citizenship.')").text('Ви можете придбати підприємство лише те, що знаходиться в країні Вашого громадянства .');
 				$("table.info_message > tbody > tr > td:contains('There are no companies for sale matching you search.')").text('Пропозиції згідно Вашого запиту відсутні.');
+				$("ul.items > li > a:[title='Food'] > img").attr("title","Споживання їжі відновлює ваше здоров'я");
+				$("ul.items > li > a:[title='Weapons'] > img").attr("title","Використання зброї збільшує завдавані вами пошкодження");
 			} else if (document.location.toString().indexOf("/job/")!==-1) {
+				// economy.erepublik.com/en/market/job/
 				// job market
 				$("#job_market > h1:contains('Job Market')").text("Центр зайнятості");
 				$("table.info_message > tbody > tr > td:contains('You already work for ')").replaceText('You already work for ','Ви вже  працюєте на ').replaceText('. To apply for this job you have to quit your current job.',". Щоб влаштуватися на нове підприємство, Вам необхідно звільнитися з попереднього.");
@@ -1110,49 +1108,39 @@ if ($("body").attr("id")=="error"){
 				$('#job_market > table > thead > tr > th.jm_apply > a > span').text('Влаштуватися');
 			};
 		};
-		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
-		// 建造 economy.erepublik.com/en/company/create
-		// 公司 economy.erepublik.com/en/company/
-		//   - 編輯 economy.erepublik.com/en/company/edit/
-		//   - 拍賣 economy.erepublik.com/en/company/sell/
-		//   - 雇員 economy.erepublik.com/en/company/employees/
-		//          economy.erepublik.com/en/company/job-offers/
-		//   - 升級 economy.erepublik.com/en/company/customize/
-		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
-		if (document.location.toString().indexOf("/company")!==-1) {
-			if (document.location.toString().indexOf("/create")!==-1) {
-				$('h1').css('font-family','Arial,Arial');
-				$('h3').css('font-family','Arial,Arial');
-				// create company
-				$('h1:first').text('Заснувати');
-				$('.create_building > h3:first').text('Оберіть тип');
-				$(".create_links > a[title='Food raw materials'] > span").text('Зерно');
-				$(".create_links > a[title='Weapon raw materials'] > span").text('Залізо');
-				$(".create_links > a[title='Factories'] > span").text('Фабрики');
-				$(".create_links > a[title='Storage'] > span").text('Склад');
-				$(".create_links > a[title='Training Facilities'] > span").text('Тренувальні будівлі');
-				$('.create_building > h3#second_title').text('Оберіть будівлю');
-				$('ul.buildings > li.food:eq(0) > a > strong').text('Зернова ферма');
-				$('ul.buildings > li.food:eq(1) > a > strong').text('Фруктовий сад');
-				$('ul.buildings > li.food:eq(2) > a > strong').text('Рибальський будиночок');
-				$('ul.buildings > li.food:eq(3) > a > strong').text('Корівник');
-				$('ul.buildings > li.food:eq(4) > a > strong').text('Мисливський будиночок');
-				$('ul.buildings > li.weapon:eq(0) > a > strong').text('Залізна шахта');
-				$('ul.buildings > li.weapon:eq(1) > a > strong').text('Нафтова скважина');
-				$('ul.buildings > li.weapon:eq(2) > a > strong').text('Алюмінієва шахта');
-				$('ul.buildings > li.weapon:eq(3) > a > strong').text('Шахта селітри');
-				$('ul.buildings > li.weapon:eq(4) > a > strong').text('Каучукова плантація');
-				$("ul.buildings > li.factories > a > strong:contains('Food')").text('Пекарня');
-				$("ul.buildings > li.factories > a > strong:contains('Weapons')").text('Фабрика зброї');
-				$("ul.buildings > li.storage > a > strong:contains('Normal')").text('Звичайний склад');
-				$("ul.buildings > li.storage > a > strong:contains('Large')").text('Великий склад');
-				$('ul.buildings > li.train:eq(0) > a > strong').text('Басейн');	
-				$('ul.buildings > li.train:eq(1) > a > strong').text('Перекладина');
-				$('ul.buildings > li.train:eq(2) > a > strong').text('Стрільбище');
-				$('ul.buildings > li.train:eq(3) > a > strong').text('Полігон');
-				$('ul.buildings > li.train > .train_cost').replaceText('train','трен.');
-				$('form#companyCreateForm a#construct > span').text('Будувати');
-			};
+		if (document.location.toString().indexOf("/company/create")!==-1) {
+			// economy.erepublik.com/en/company/create
+			$('h1').css('font-family','Arial,Arial');
+			$('h3').css('font-family','Arial,Arial');
+			// create company
+			$('h1:first').text('Заснувати');
+			$('.create_building > h3:first').text('Оберіть тип');
+			$(".create_links > a[title='Food raw materials'] > span").text('Зерно');
+			$(".create_links > a[title='Weapon raw materials'] > span").text('Залізо');
+			$(".create_links > a[title='Factories'] > span").text('Фабрики');
+			$(".create_links > a[title='Storage'] > span").text('Склад');
+			$(".create_links > a[title='Training Facilities'] > span").text('Тренувальні будівлі');
+			$('.create_building > h3#second_title').text('Оберіть будівлю');
+			$('ul.buildings > li.food:eq(0) > a > strong').text('Зернова ферма');
+			$('ul.buildings > li.food:eq(1) > a > strong').text('Фруктовий сад');
+			$('ul.buildings > li.food:eq(2) > a > strong').text('Рибальський будиночок');
+			$('ul.buildings > li.food:eq(3) > a > strong').text('Корівник');
+			$('ul.buildings > li.food:eq(4) > a > strong').text('Мисливський будиночок');
+			$('ul.buildings > li.weapon:eq(0) > a > strong').text('Залізна шахта');
+			$('ul.buildings > li.weapon:eq(1) > a > strong').text('Нафтова скважина');
+			$('ul.buildings > li.weapon:eq(2) > a > strong').text('Алюмінієва шахта');
+			$('ul.buildings > li.weapon:eq(3) > a > strong').text('Шахта селітри');
+			$('ul.buildings > li.weapon:eq(4) > a > strong').text('Каучукова плантація');
+			$("ul.buildings > li.factories > a > strong:contains('Food')").text('Пекарня');
+			$("ul.buildings > li.factories > a > strong:contains('Weapons')").text('Фабрика зброї');
+			$("ul.buildings > li.storage > a > strong:contains('Normal')").text('Звичайний склад');
+			$("ul.buildings > li.storage > a > strong:contains('Large')").text('Великий склад');
+			$('ul.buildings > li.train:eq(0) > a > strong').text('Басейн');	
+			$('ul.buildings > li.train:eq(1) > a > strong').text('Перекладина');
+			$('ul.buildings > li.train:eq(2) > a > strong').text('Стрільбище');
+			$('ul.buildings > li.train:eq(3) > a > strong').text('Полігон');
+			$('ul.buildings > li.train > .train_cost').replaceText('train','трен.');
+			$('form#companyCreateForm a#construct > span').text('Будувати');
 		};
 	};
 };

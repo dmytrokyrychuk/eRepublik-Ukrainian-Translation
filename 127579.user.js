@@ -3,7 +3,7 @@
 // @namespace      Ukrainian Translation
 // @author         CBAPTOR
 // @description    eRepublik Українська
-// @version        0.99
+// @version        0.991
 // @match          http://*.erepublik.com/*
 // @include        http://*.erepublik.com/*
 // @require        https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js
@@ -177,15 +177,45 @@ if ($("body").attr("id")=="error"){
 				$("a#work.green_enlarged > span").text("Працювати");
 				$(".resign").text("Звільнитися").attr("title","Звільнитися");
 				// popup window
-				$("#work_results.solid_pop.details. > .content > .fixer > h1").text("Результати роботи");
-				$(".more_details > span").text("Показати деталі");
-				$(".more_details").attr("title","Показати деталі");
-				$(".details_holder > strong").text("Деталі");
+				$("#work_results a[title='Show details'] > span:eq(0)").text('Деталі');
+				$("#work_results a[title='Show details'] > span:eq(1)").text('Деталі');
+				$('#work_results .wdetails_bar > #national_bonus > div:first > small').text('Бонус від ресурсів країни');
+				$('#work_results .wdetails_bar > .list.stats > div:first > small').text('Результати роботи');
+				$("#work_results .wdetails_bar > .list.stats > div:last > div[title='Days worked in a row']").attr('title','Відпрацьовано днів');
+				$("#work_results .wdetails_bar > .list.stats > div:last > div[title='Experience points']").attr('title','Балів досвіду');
+				$("#work_results .wdetails_bar > .list.stats > div:last > div[title='Health loss']").attr('title','Витрачено здоров`я');
+				$("#work_results .wdetails_bar > .list.stats > div:last > div[title='Raw materials used']").attr('title','Використано сировини');
+				//$("#work_results.solid_pop.details. > .content > .fixer > h1").text("Результати роботи");
+				//$(".more_details > span").text("Показати деталі");
+				//$(".more_details").attr("title","Показати деталі");
+				//$(".details_holder > strong").text("Деталі");
 				//$(".hard_worker > p").repalceText("You have","Залишилось працювати ");
 				//$(".hard_worker > p > span").repalceText("days","днів");*/
 				// companies
 				$(".area > h4").replaceText("My companies","Мої компанії");
-				$("a#help_manage.helper").attr("href","http://www.erepublik.com/en/article/-smoef-beta--1957402/1/20").attr("target","_blank").attr("title","Дізнатися, як керувати своїми компаніями").text("Як керувати своїми компаніями?");
+				 $('.manager_dashboard .list > div.area > h4') .find("a:contains('How to manage your companies')") .replaceText('How to manage your companies','Як керувати своїми компаніями?');
+				$('.tutorial_pop h1') .replaceText('How to manage your companies','Як керувати? (натисніть)');
+				$('.tutorial_pop') .live("click",function(){
+				$('h2 > span#tut_subtitle') .replaceText('Choose the companies in which you want to work as manager','Оберіть підприємства, в яких Ви хочете працювати самотушки.') .replaceText('Check how many of your employees came to work so far','Перевірте, скільки найманих працівників вже відпрацювало.') .replaceText('Assign them to your companies','Розподіліть їхню працю між підприємствами.') .replaceText(" When you are happy with your management decisions,","Коли закінчите, натисніть ").replaceText('Start Production!','Почати виробнитство!');
+				$('small > span') .replaceText("Don't worry about your current health. If necessary, you will be eating food automatically. Just make sure you have enough food in inventory and enough health left to recover.",'Їжа використовується автоматично, якщо вона є у Вас у сховищі.');
+				$('small > span') .replaceText("The employees are no longer working in a specific company, but they work for the manager. They come to work and get their salary paid, but they are not producing anything until you decide where to use them.",'Наймані працівники вже не працюють в певному підприємстві. Вони віддають Вам свою працю і отримують за це зарплатню. На яких підприємствах використати їхню працю, Ви вирішуєте самі.');
+				$('small > span') .replaceText("Each company type can support a limited number of employees. Upgrading companies or buying better raw materials companies can increase the number of employees you can hire an assign.",'Кількість працівників, що можуть відпрацювати на певному підприємстві, залежать від його рівня.');
+				$('small > span') .replaceText("You can start production as many times you want during a day as long as you still have unassigned employees or companies you didn't work in as a manager yet. However, it will be easier for you to start production only once a day.",'Ви можете починати виробнитство безліч разів на добу. За умови, що ще залишилися місця де не відпрацювали працівники або Ви самі.');
+				$('.main > span') .text('Далі');
+				});
+				$('.solid_pop .inner .message > div.text > h4.food_warning') .replaceText('Not enough food to eat in order to recover health','Недостатньо їжі в сховищі');
+				$('.solid_pop .inner .message > div.text > h4.health_warning') .replaceText('Health limit exceeded','Здоров`ще не відновилося');
+				$('.solid_pop .inner .message > div.text > h4.storage_warning') .replaceText('Storage limit exceeded','Недостатньо місця в сховищі');
+				$('.solid_pop .inner .message > div.text > h4.works_warning') .replaceText('Too many employees assigned','Надто багато працівників розміщено');
+				$('.solid_pop .inner .message > div.text > h4.raw_warning') .replaceText('Not enough raw materials','Недостатньо сировини');
+				$('.solid_pop .inner .message > div.text > h4.food_raw_warning') .replaceText('Not enough food raw materials','Недостатньо зерна');
+				$('.solid_pop .inner .message > div.text > h4.weapon_raw_warning') .replaceText('Not enough weapon raw materials','Недостатньо заліза');
+				$('.solid_pop .inner .message > div.text > h4.money_warning') .replaceText('Not enough money to pay your salary','Недостатньо грошей для зарплатні');
+				$('.solid_pop .inner .message > div.text > h4.work_limit_warning') .replaceText('Your employer cannot receive any more employees today','Ваш працедавець вже не може прийняти Вашу працю сьогодні');
+				$('.solid_pop .inner .message > div.text > h4.nothing_selected') .replaceText("No employees or work as manager assigned, nothing to produce",'Ніхто не призначений на роботу.');
+				$('.solid_pop .action span') .replaceText('Cancel','Скасувати');
+				$('.manager_dashboard .green_enlarged span') .replaceText('Start production','Почати виробнитство');
+				$('.manager_dashboard .list .area .green_enlarged') .attr('title','Почати виробнитство');
 				$(".warning_notice").text("Не вистачає грошей, щоб заплатити працівникам за один день.");
 				$(".c1 > strong").text("Компанії");
 				$(".c2 > strong").text("Працівники");
@@ -228,7 +258,7 @@ if ($("body").attr("id")=="error"){
 				$('#inventory_overview > .items_holder > h4:eq(0)').text('Товар');
 				$('#inventory_overview > .items_holder > h4:eq(1)').text('Сировина');
 				$('#inventory_overview > .items_holder > h4:eq(2)').text('Зібрати РПГ');
-				$("ul.product_list > li:[industry='1'] > img").each(function() {$(this).attr("title","Споживання їжі відновлює ваше здоров'я")});
+				$("ul.product_list > li:[industry='1'] > img").each(function() {$(this).attr("title","Споживання їжі відновлює ваше здоров`я")});
 				$("ul.product_list > li:[industry='2'] > img").each(function() {$(this).attr("title","Використання зброї збільшує завдавані вами пошкодження")});
 				$(".item_mask > ul > li:eq(0) > img").attr("title","Сировина, необхідна для виготовлення їжі");//should work, but it doesn't! wtf?
 				$(".item_mask > ul > li:eq(1) > img").attr("title","Сировина, необхідна для виготовлення зброї");//should work, but it doesn't! wtf?
@@ -261,10 +291,21 @@ if ($("body").attr("id")=="error"){
 			} else if (document.location.toString().indexOf("/health-expansions")!==-1) {
 				$(".area.health_buildings > h4").text("Санаторії");
 				$(".heading > .c1 > strong").text("Санаторії");
-				$(".heading > .c2 > strong").text("Бонус здоров'я");
+				$(".heading > .c2 > strong").text("Бонус здоров`я");
 				$(".heading > .area_controls.c1 > div > a.grey_plastic").attr("title","Докупити санаторій");
-				$(".heading > .area_controls.c1 > div > a.grey_plastic.right_pos").attr("title","Апгрейдити таунцентр");
-				$(".required_health.min.c2 > em").text("Максимум здоров'я");
+				$(".heading > .area_controls.c1 > div > a.grey_plastic.right_pos").attr("title","Покращити міську ратушу");
+				$(".required_health.min.c2 > em").text("Максимум здоров`я");
+			} else if (document.location.toString().indexOf("/manage-employees")!==-1){
+				//Companies > Manage employees 
+				$('.manager_dashboard .list h4') .replaceText('My Companies » Manage employees','Керувати найманими працівниками');
+				$('.manager_dashboard .list .area.employees .active_offers .c12 strong > span') .replaceText('No','Ні');
+				$('.manager_dashboard .list .area.employees .active_offers .c12 strong') .replaceText('active job offers','активні пропозиції') .replaceText('active job offer','активні пропозиції');
+				$('.manager_dashboard .list .area.employees .bottom_details > .employees > em') .text('працівник');
+				$('.manager_dashboard .list .area.employees .bottom_details > .work_presence > em') .text('активні пропозиції');
+				$('.manager_dashboard .list .area.employees .bottom_details > .total_dues > em') .text('Всього заробітної плати');
+				$('.heading .c1 strong').text('Працівники');
+				$('.heading .c2 strong').text('ду-ду-да-да');
+				$('.heading .c3 strong').text('плата');
 			}
 		};
 		
@@ -1141,6 +1182,76 @@ if ($("body").attr("id")=="error"){
 			$('ul.buildings > li.train:eq(3) > a > strong').text('Полігон');
 			$('ul.buildings > li.train > .train_cost').replaceText('train','трен.');
 			$('form#companyCreateForm a#construct > span').text('Будувати');
+		} else {
+			$('h2').css('font-family','Arial,Arial');
+			$('h4').css('font-family','Arial,Arial');
+			// company profile
+			$('#companyOptions > .content_part > .left_part > ul > li > a.edit').html('<img src="http://www.erepublik.com/images/modules/_icons/company_edit_details.png" alt=""> 編輯詳情');
+			$("#companyOptions > .content_part > .left_part > ul > li > a:contains('Sell company')").html('<img src="http://www.erepublik.com/images/modules/_icons/company_sell.png" alt=""> 拍賣公司');
+			$("#companyOptions > .content_part > .left_part > ul > li > a:contains('Company profile')").html('<img src="http://www.erepublik.com/images/modules/_icons/company_profile.png" alt=""> 公司資料');
+			$("#companyOptions > .content_part > .left_part > ul > li > a:contains('Migrate company')").html('<img src="http://www.erepublik.com/images/modules/_icons/company_migrate.png" alt=""> 更改公司類型');
+			$("#company_info_panel > .elements > .product_stock > h2:contains('Total food raw material stock')").text('庫存食物原料');
+			$("#company_info_panel > .elements > .product_stock > h2:contains('Total weapon raw material stock')").text('庫存武器原料');
+			$("#company_info_panel > .elements > .product_stock > h2:contains('Total food stock')").text('庫存食物');
+			$("#company_info_panel > .elements > .product_stock > h2:contains('Total weapons stock')").text('庫存武器');
+			$("#company_info_panel > .elements > .product_stock > .stats > p:contains('This data is confidential.')").text('相關公司資料保密.');
+			$('#company_info_panel > .elements > .finances > h2:first').text('資金額度');
+			$('#company_info_panel > .elements > .raw_materials > h2:first').text('產品原料');
+			$("#company_info_panel > .elements > .raw_materials > .stats > p:contains('This data is confidential.')").text('相關公司資料保密.');
+			$('#company_info_panel > .elements > .raw_materials > .stats > p').replaceText('raw material req. per ','單位原料, 可以生產一單位').replaceText('food','食物.').replaceText('weapon','武器.');
+			$('#company_info_panel > .manage_panel > .storage_actions > table > tbody > tr > td > a > span').text('查看倉庫庫存');
+			$('#company_info_panel > .manage_panel > .finances_actions > table > tbody > tr > td > a > span').text('查看現金帳戶');
+			$('#company_info_panel > .manage_panel > .raw_materials_actions > tbody > tr > td > a > span').text('購買產品原料');
+			$('#production_status > table.stats > tbody > tr > td > .employee > big > span:last').text('雇員');
+			$('#production_status > table.stats > tbody > tr > td > .employee > .recommended_employees > a.manage_link').text('管理雇員');
+			$("table.info_message > tbody > tr > td:contains('You can view your market licences and sell products directly from your')").html('你可以直接檢視及販售自己 <a href="http://www.erepublik.com/en/economy/inventory" rel="noreferrer">倉庫</a> 中的產品.');
+			$("table.error_message > tbody > tr > td:contains('This company name is already used by another Erpk entity. Please choose another one.')").text('這個公司名稱已被他人使用, 建議重新選擇其它的名稱.');
+			if (document.location.toString().indexOf("/company/edit/")!==-1) {
+				// company edit
+				$('form#companyEditForm > h2:first').text('公司登記');
+				$("form#companyEditForm > .container_blue_border > .company_name > strong:contains('Company name')").text('公司名稱');
+				$("form#companyEditForm > .container_blue_border > strong.blued:contains('Company description')").text('關於此公司　　　');
+				$("form#companyEditForm > table > tbody > tr > td > a[title='Save changes'] > span").text('確定更改');
+			} else if (document.location.toString().indexOf("/company/sell/")!==-1) {
+				// company sell
+				$('.sell_company > h2:first').text('Продаж або закриття підприємства');
+				$('.sell_company > .disolve_company > h2:first').text('Закриття підприємства');
+				$('.sell_company > .disolve_company > table > tbody > tr > td > p').replaceText('You can dissolve your company for','Ви можете закрити підприємство за');
+				$(".sell_company > .disolve_company > table > tbody > tr > td > a[title='Dissolve company'] > span").text('Закрити підприємство');
+				$("table.info_message > tbody > tr > td:contains('Raw Material buildings cannot be sold.')").text('Сировинні підприємтсва не можуть бути продані.')
+				$("table.info_message > tbody > tr > td:contains('This building cannot be sold nor dissolved.')").text('Підприємство не можете бути продане або закрите.')
+				//$("table.info_message > tbody > tr > td:contains('Dissolving a company will empty')").text('解散公司會清空土地上己有的建築物, 然後你可以再建造新的建築在上面.')
+				$("table.info_message > tbody > tr > td:contains('This company can be put on sale starting with')").replaceText('This company can be put on sale starting with','Це підприємство може бути поставлене на продаж після').replaceText('of the New World, at',' ').replaceText("(10 days since it was created or bought).","10 днів з часу заснування або купівлі");
+			} else if ((document.location.toString().indexOf("/company/employees/")!==-1) || (document.location.toString().indexOf("/company/job-offers/")!==-1)) {
+				// company employee
+				$('#employee_list > h2:first').text('管理雇員');
+				$("#employee_list > ul.ftabs > li > a[title='Employee list']").replaceText('Employee list','雇員清單');
+				$("#employee_list > ul.ftabs > li > a[title='Job offers']").replaceText('Job offers','工作職缺');
+				$('#employee_list > table > thead > tr.el_mainh > th.el_employee').text('雇員');
+				$('#employee_list > table > thead > tr.el_mainh > th.el_productivity > span:first').text('單位產量');
+				$('#employee_list > table > thead > tr.el_mainh > th.el_salary > a').text('日薪');
+				$('#employee_list > table > tbody > tr > td.el_salary > div > a.f_red_small > span').text('開除');
+				$("table.info_message > tbody > tr > td:contains('This company has no employees at the moment')").text('這間公司目前沒有任何雇員.')
+				// company job offer
+				$('#job_offers > h2:first').text('管理雇員');
+				$("#job_offers > ul.ftabs > li > a[title='Employee list']").replaceText('Employee list','雇員清單');
+				$("#job_offers > ul.ftabs > li > a[title='Job offers']").replaceText('Job offers','工作職缺');
+				$('#job_offers > table > thead > tr.jo_mainh > th.jo_ammount').text('職缺');
+				$('#job_offers > table > thead > tr.jo_mainh > th.jo_salary > a').text('日薪');
+				$("#job_offers > table > tbody > tr > td > div > a[title='Change'] > span").text('更改');
+				$("#job_offers > table > tbody > tr > td > div > a[title='Save'] > span").text('儲存');
+				$("table.info_message > tbody > tr > td:contains('This company has no job offers at the moment')").text('這間公司目前沒有任何職缺.')
+			} else if (document.location.toString().indexOf("/company/migrate/")!==-1) {
+				// company migrate
+				// -- my friend tell me this function will be removed in the future \o/ @blakcca
+			} else if (document.location.toString().indexOf("/company/customize/")!==-1) {
+				// company upgrade, downgrade
+				$('.product_design > h2:first').text('升級公司');
+				$('.product_design > .container_blue_border > h4:first').text('請選擇你想調整的公司等級');
+				$('.product_design > .container_blue_border > ul.packs > li > .product_detail > span').replaceText('Refund','退還').replaceText('Cost','花費').replaceText('Owned','已擁有');
+				$('.product_design > .container_blue_border > ul.packs > li > a.upgrade').text('升級');
+				$('.product_design > .container_blue_border > ul.packs > li > a.downgrade').text('降級');
+			};
 		};
 	};
 };

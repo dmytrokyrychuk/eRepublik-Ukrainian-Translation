@@ -33,14 +33,21 @@ if ($("body").attr("id")=="error"){
 		$('#menu ul li#menu3 a').css('background-image','url(\"http://img16.imageshack.us/img16/4511/maperepubliklogged22.png\")');
 		$('#menu ul li#menu4 a').css('background-image','url(\"http://img16.imageshack.us/img16/4511/maperepubliklogged22.png\")');
 		$('#menu ul li#menu5 a').css('background-image','url(\"http://img16.imageshack.us/img16/4511/maperepubliklogged22.png\")');
+		$('#menu > ul > li#menu2').append('<ul>'+
+			'<li><a href=\"http://www.erepublik.com/en/economy/myCompanies\" targe="_self">Мої компанії</a></li>'+
+			'<li><a href=\"http://www.erepublik.com/en/economy/training-grounds\" targe="_self">Тренувальні майданчики</a></li>'+
+			'<li><a href=\"http://www.erepublik.com/en/economy/inventory\" targe="_self">Сховище</a></li>'+
+			'<li><a href=\"http://www.erepublik.com/en/economy/health-expansions\" targe="_self">Санаторії</a></li>'+
+			'</ul>'
+		);
 		$('#menu > ul > li#menu3').append('<ul>' +
 			'<li><a href=\"http://www.erepublik.com/' +lang+ '/newspaper/mod-bulletin-189504/1\" target="_self">Накази Мін Оборони</a></li>' +
 		     '<li><a href=\"http://egov4you.info/\" target="_self">egov4you.info</a></li>' +
-			'<li><a href=\"http://erep.maxihellas.com/\" target="_self">erep.maxihellas</a></li>' +
-			'<li><a href=\"http://erepublik-market.com/weapons.html" target="_self">erepublik-market</a></li></ul>');
+			'<li><a href=\"http://erep.maxihellas.com/\" target="_self">erep.maxihellas</a></li>');
 		$("#menu > ul > li#menu4 > ul > li > a:contains('Marketplace')").text('Ринок');
 		$("#menu > ul > li#menu4 > ul > li > a:contains('Monetary')").text('Валютний ринок');
 		$("#menu > ul > li#menu4 > ul > li > a:contains('Job')").text('Центр зайнятості');
+		$("#menu > ul > li#menu4 > ul").append('<li><a href=\"http://erepublik-market.com/weapons.html" target="_self">erepublik-market</a></li></ul>')
 		$("#menu > ul > li#menu4 > ul > li > a:contains('Companies for sale')").text('Компанії на продаж');
 		$("#menu > ul > li#menu5 > ul > li > a:contains('World Map')").text('Мапа світу');
 		$("#menu > ul > li#menu5 > ul > li > a:contains('My Party')").text('Моя партія');
@@ -1007,9 +1014,9 @@ if ($("body").attr("id")=="error"){
 				$(".resource_list > tbody > tr > td > span:exact('Oil')").text("Нафта");
 				$(".resource_list > tbody > tr > td > span:exact('Rubber')").text("Гума");
 				
-				$("th:exact('Income Tax')").text("Податок на імпорт");
-				$("th:exact('Import Tax')").text("Податок на експорт");
-				$("th:exact('VAT')").text("VAT");
+				$("th:exact('Income Tax')").text("Прибутковий податок");
+				$("th:exact('Import Tax')").text("Імпортне мито");
+				$("th:exact('VAT')").text("ПДВ");
 				$("span.fakeheight:contains('Food')").text("Їжа");
 				$("span.fakeheight:contains('Weapons')").text("Зброя");
 				$("span.fakeheight:contains('House')").text("Будинки");

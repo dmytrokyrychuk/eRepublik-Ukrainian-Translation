@@ -3,7 +3,7 @@
 // @namespace      Ukrainian Translation
 // @author         CBAPTOR
 // @description    eRepublik Українська
-// @version        0.991
+// @version        0.0.0.1
 // @match          http://*.erepublik.com/*
 // @include        http://*.erepublik.com/*
 // @require        https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js
@@ -176,7 +176,7 @@ if ($("body").attr("id")=="error"){
 				$(".employer_salary > em:contains('Tax')").text("Податок");
 				$("a#work.green_enlarged > span").text("Працювати");
 				$(".resign").text("Звільнитися").attr("title","Звільнитися");
-				// popup window
+				// popup windows
 				$("#work_results a[title='Show details'] > span:eq(0)").text('Деталі');
 				$("#work_results a[title='Show details'] > span:eq(1)").text('Деталі');
 				$('#work_results .wdetails_bar > #national_bonus > div:first > small').text('Бонус від ресурсів країни');
@@ -185,23 +185,25 @@ if ($("body").attr("id")=="error"){
 				$("#work_results .wdetails_bar > .list.stats > div:last > div[title='Experience points']").attr('title','Балів досвіду');
 				$("#work_results .wdetails_bar > .list.stats > div:last > div[title='Health loss']").attr('title','Витрачено здоров`я');
 				$("#work_results .wdetails_bar > .list.stats > div:last > div[title='Raw materials used']").attr('title','Використано сировини');
-				//$("#work_results.solid_pop.details. > .content > .fixer > h1").text("Результати роботи");
-				//$(".more_details > span").text("Показати деталі");
-				//$(".more_details").attr("title","Показати деталі");
-				//$(".details_holder > strong").text("Деталі");
-				//$(".hard_worker > p").repalceText("You have","Залишилось працювати ");
-				//$(".hard_worker > p > span").repalceText("days","днів");*/
-				// companies
+				$('#work_results .fixer h1').text("Результати роботи");
+				//$('#work_results .details_holder ul > li:eq()').attr("title","");//backup
+				$('#work_results .details_holder ul > li:eq(0)').attr("title","Залишилось працювати днів, щоб отримати медаль Сумлінного Працівника");	
+				$('#work_results .details_holder ul > li:eq(1)').attr("title","Відпрацьовано днів підряд");
+				$('#work_results .details_holder ul > li:eq(2)').attr("title","Отримано балів досвіду");
+				$('#work_results .details_holder ul > li:eq(3)').attr("title","Витрачено здоров'я");	
+				$('#work_results .salary_tooltip h4').text("Деталі про заробітну плату");
+				$('#work_results .salary_tooltip ul > li:eq(0)').text("Платня");
+				$('#work_results .salary_tooltip ul > li:eq(1)').text("Податок");
 				$(".area > h4").replaceText("My companies","Мої компанії");
-				 $('.manager_dashboard .list > div.area > h4') .find("a:contains('How to manage your companies')") .replaceText('How to manage your companies','Як керувати своїми компаніями?');
+				$('.manager_dashboard .list > div.area > h4') .find("a:contains('How to manage your companies')") .replaceText('How to manage your companies','Як керувати своїми компаніями?');
 				$('.tutorial_pop h1') .replaceText('How to manage your companies','Як керувати? (натисніть)');
 				$('.tutorial_pop') .live("click",function(){
-				$('h2 > span#tut_subtitle') .replaceText('Choose the companies in which you want to work as manager','Оберіть підприємства, в яких Ви хочете працювати самотушки.') .replaceText('Check how many of your employees came to work so far','Перевірте, скільки найманих працівників вже відпрацювало.') .replaceText('Assign them to your companies','Розподіліть їхню працю між підприємствами.') .replaceText(" When you are happy with your management decisions,","Коли закінчите, натисніть ").replaceText('Start Production!','Почати виробнитство!');
-				$('small > span') .replaceText("Don't worry about your current health. If necessary, you will be eating food automatically. Just make sure you have enough food in inventory and enough health left to recover.",'Їжа використовується автоматично, якщо вона є у Вас у сховищі.');
-				$('small > span') .replaceText("The employees are no longer working in a specific company, but they work for the manager. They come to work and get their salary paid, but they are not producing anything until you decide where to use them.",'Наймані працівники вже не працюють в певному підприємстві. Вони віддають Вам свою працю і отримують за це зарплатню. На яких підприємствах використати їхню працю, Ви вирішуєте самі.');
-				$('small > span') .replaceText("Each company type can support a limited number of employees. Upgrading companies or buying better raw materials companies can increase the number of employees you can hire an assign.",'Кількість працівників, що можуть відпрацювати на певному підприємстві, залежать від його рівня.');
-				$('small > span') .replaceText("You can start production as many times you want during a day as long as you still have unassigned employees or companies you didn't work in as a manager yet. However, it will be easier for you to start production only once a day.",'Ви можете починати виробнитство безліч разів на добу. За умови, що ще залишилися місця де не відпрацювали працівники або Ви самі.');
-				$('.main > span') .text('Далі');
+					$('h2 > span#tut_subtitle') .replaceText('Choose the companies in which you want to work as manager','Оберіть підприємства, в яких Ви хочете працювати самотушки.') .replaceText('Check how many of your employees came to work so far','Перевірте, скільки найманих працівників вже відпрацювало.') .replaceText('Assign them to your companies','Розподіліть їхню працю між підприємствами.') .replaceText(" When you are happy with your management decisions,","Коли закінчите, натисніть ").replaceText('Start Production!','Почати виробнитство!');
+					$('small > span') .replaceText("Don't worry about your current health. If necessary, you will be eating food automatically. Just make sure you have enough food in inventory and enough health left to recover.",'Їжа використовується автоматично, якщо вона є у Вас у сховищі.');
+					$('small > span') .replaceText("The employees are no longer working in a specific company, but they work for the manager. They come to work and get their salary paid, but they are not producing anything until you decide where to use them.",'Наймані працівники вже не працюють в певному підприємстві. Вони віддають Вам свою працю і отримують за це зарплатню. На яких підприємствах використати їхню працю, Ви вирішуєте самі.');
+					$('small > span') .replaceText("Each company type can support a limited number of employees. Upgrading companies or buying better raw materials companies can increase the number of employees you can hire an assign.",'Кількість працівників, що можуть відпрацювати на певному підприємстві, залежать від його рівня.');
+					$('small > span') .replaceText("You can start production as many times you want during a day as long as you still have unassigned employees or companies you didn't work in as a manager yet. However, it will be easier for you to start production only once a day.",'Ви можете починати виробнитство безліч разів на добу. За умови, що ще залишилися місця де не відпрацювали працівники або Ви самі.');
+					$('.main > span') .text('Далі');
 				});
 				$('.solid_pop .inner .message > div.text > h4.food_warning') .replaceText('Not enough food to eat in order to recover health','Недостатньо їжі в сховищі');
 				$('.solid_pop .inner .message > div.text > h4.health_warning') .replaceText('Health limit exceeded','Здоров`ще не відновилося');
@@ -213,7 +215,29 @@ if ($("body").attr("id")=="error"){
 				$('.solid_pop .inner .message > div.text > h4.money_warning') .replaceText('Not enough money to pay your salary','Недостатньо грошей для зарплатні');
 				$('.solid_pop .inner .message > div.text > h4.work_limit_warning') .replaceText('Your employer cannot receive any more employees today','Ваш працедавець вже не може прийняти Вашу працю сьогодні');
 				$('.solid_pop .inner .message > div.text > h4.nothing_selected') .replaceText("No employees or work as manager assigned, nothing to produce",'Ніхто не призначений на роботу.');
+				$('.solid_pop a.raw_warning span').text('Купити на ринку');
+				$('.solid_pop a.food_raw_warning span').text('Купити на ринку');
+				$('.solid_pop a.weapon_raw_warning span').text('Купити на ринку');
+				$('.solid_pop a.storage_warning span').text('Покращити сховище');
+				$('.solid_pop a.food_warning span').replaceText('Buy from market','Купити на ринку');
 				$('.solid_pop .action span') .replaceText('Cancel','Скасувати');
+				$('#energy_bar_pop .solid_pop h4').text("Батончики будуть використані для відновлення здоров'я");
+				$('#energy_bar_pop a#consume_energy span').text("Почати виробництво");
+				$('#production_results h1').text("Виробництво");
+				$('#production_results .details_holder strong:first').text("Бонуси");
+				$('#production_results .details_holder strong.production_stats').text("Результат");
+				$('#production_results .details_holder ul:eq(1) > li:eq(0)').attr("title","Залишилось працювати днів, щоб отримати медаль Сумлінного Працівника");
+				$('#production_results .details_holder ul:eq(1) > li:eq(1)').attr("title","Відпрацьовано днів підряд");
+				$('#production_results .details_holder ul:eq(1) > li:eq(2)').attr("title","Отримано балів досвіду");
+				$('#production_results .details_holder ul:eq(1) > li:eq(3)').attr("title","Витрачено здоров'я");
+				$('#production_results .details_holder ul:eq(1) > li:eq(4)').attr("title","Призначено працівників");
+				$('#production_results .details_holder ul:eq(1) > li:eq(5)').attr("title","Витрачено зерна");
+				$('#production_results .details_holder ul:eq(1) > li:eq(6)').attr("title","Витрачено заліза");
+				$('#production_results .details_holder ul:eq(1) > li:eq(13)').attr("title","Витрачено живильних батончиків");
+				$('.hard_worker p').replaceText("You have","Потрібно відпрацювати ще ").replaceText("left to work to get the Hardworker medal","щоб отримати медаль Сумлінного Працівника");
+				$('.hard_worker p span').replaceText("days","днів, ");
+				$('a.more_details').attr("title","Показати деталі");
+				$('a.more_details span').text("Показати деталі");
 				$('.manager_dashboard .green_enlarged span') .replaceText('Start production','Почати виробнитство');
 				$('.manager_dashboard .list .area .green_enlarged') .attr('title','Почати виробнитство');
 				$(".warning_notice").text("Не вистачає грошей, щоб заплатити працівникам за один день.");
@@ -298,14 +322,14 @@ if ($("body").attr("id")=="error"){
 			} else if (document.location.toString().indexOf("/manage-employees")!==-1){
 				//Companies > Manage employees 
 				$('.manager_dashboard .list h4') .replaceText('My Companies » Manage employees','Керувати найманими працівниками');
-				$('.manager_dashboard .list .area.employees .active_offers .c12 strong > span') .replaceText('No','Ні');
-				$('.manager_dashboard .list .area.employees .active_offers .c12 strong') .replaceText('active job offers','активні пропозиції') .replaceText('active job offer','активні пропозиції');
+				$('.manager_dashboard .list .area.employees .active_offers .c12 strong > span') .replaceText('No','Нема');
+				$('.manager_dashboard .list .area.employees .active_offers .c12 strong') .replaceText('active job offers','активних пропозицій') .replaceText('active job offer','активні пропозиції');
 				$('.manager_dashboard .list .area.employees .bottom_details > .employees > em') .text('працівник');
 				$('.manager_dashboard .list .area.employees .bottom_details > .work_presence > em') .text('активні пропозиції');
 				$('.manager_dashboard .list .area.employees .bottom_details > .total_dues > em') .text('Всього заробітної плати');
 				$('.heading .c1 strong').text('Працівники');
-				$('.heading .c2 strong').text('ду-ду-да-да');
-				$('.heading .c3 strong').text('плата');
+				$('.heading .c2 strong').text('7 робочих днів присутності');
+				$('.heading .c3 strong').text('Плата');
 			}
 		};
 		

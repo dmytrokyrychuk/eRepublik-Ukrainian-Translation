@@ -3,12 +3,11 @@
 // @namespace      Ukrainian Translation
 // @author         CBAPTOR
 // @description    eRepublik Українська
-// @version        0.0.0.1
+// @version        0.993
 // @match          http://*.erepublik.com/*
 // @include        http://*.erepublik.com/*
-// @require        https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js
+// @require        https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
 // @require        https://raw.github.com/cowboy/jquery-replacetext/master/jquery.ba-replacetext.min.js
-// @require        http://sizzlemctwizzle.com/updater.php?id=113187&days=3&uso
 // ==/UserScript==
 
 	var lang = document.location.pathname.substr(1,2);
@@ -27,12 +26,14 @@ if ($("body").attr("id")=="error"){
 		$('strong#foodText').css('font-family','Arial,Arial');
 		// header
 		$("a.ambient_toggler > span").text("Увімкнути/вимкнути тло");
+		// eday
+		$("html body#homepage_feed div#container div#header div.header_info div span.eday").replaceText("Day","").replaceText(" of the New World","-й день Нового Світу");
 	  	//$("input#search_field.field").attr("value","Пошук громадян");
 		// common catalog
-		$('#menu ul li#menu2 a').css('background-image','url(\"http://img16.imageshack.us/img16/4511/maperepubliklogged22.png\")');
-		$('#menu ul li#menu3 a').css('background-image','url(\"http://img16.imageshack.us/img16/4511/maperepubliklogged22.png\")');
-		$('#menu ul li#menu4 a').css('background-image','url(\"http://img16.imageshack.us/img16/4511/maperepubliklogged22.png\")');
-		$('#menu ul li#menu5 a').css('background-image','url(\"http://img16.imageshack.us/img16/4511/maperepubliklogged22.png\")');
+		$('#menu ul li#menu2 a').css('background-image','url(\"http://img827.imageshack.us/img827/4124/maperepublikloggedukrv1.png\")');
+		$('#menu ul li#menu3 a').css('background-image','url(\"http://img827.imageshack.us/img827/4124/maperepublikloggedukrv1.png\")');
+		$('#menu ul li#menu4 a').css('background-image','url(\"http://img827.imageshack.us/img827/4124/maperepublikloggedukrv1.png\")');
+		$('#menu ul li#menu5 a').css('background-image','url(\"http://img827.imageshack.us/img827/4124/maperepublikloggedukrv1.png\")');
 		$('#menu > ul > li#menu2').append('<ul>'+
 			'<li><a href=\"http://www.erepublik.com/en/economy/myCompanies\" targe="_self">Мої компанії</a></li>'+
 			'<li><a href=\"http://www.erepublik.com/en/economy/training-grounds\" targe="_self">Тренувальні майданчики</a></li>'+
@@ -57,6 +58,7 @@ if ($("body").attr("id")=="error"){
 		$("#menu > ul > li#menu5 > ul > li > a:contains('Badges')").text('Рекламні банери');
 		$('#menu > ul > li#menu5 > ul').prepend('<li><a href=\"http://www.erepublik.com/en/news/latest/all\" target="_self">Останні новини</a></li>');
 		$('#menu > ul > li#menu5 > ul').append(
+			'<li><a href=\"http://www.erepublik.com/en/newspaper/education-of-eukraine-271249/1/" target="_blank">Міністерство Освіти</a></li>'+
 			'<li><a href=\"http://www.erepublik.com/en/newspaper/diplomacy-of-eukraine-192017/1/" target="_blank">Міністерство Зовнішніх Справ</a></li>'+
 			'<li><a href=\"http://www.erepublik.com/en/newspaper/demography-news-240441/1/" target="_blank">Міністерство Демографії</a></li>'+
 			'<li><a href=\"http://www.erepublik.com/en/newspaper/president-of-eukraine-242674/1/" target="_blank">Президент єУкраїни</a></li>'+
@@ -260,7 +262,7 @@ if ($("body").attr("id")=="error"){
 				$(".c4 > a").attr("title","Купити на ринку");
 				$(".employees_available > em").text("Призначено працівників");
 				$(".raw_materials > em").text("Ресурси");
-				$("#start_production > span").text("Працювати");
+				$("#start_production > span").text("Почати виробнитство");
 			} else if (document.location.toString().indexOf("/training-grounds")!==-1){
 				//! www.erepublik.com/en/economy/training-grounds
 				// Training grounds
@@ -978,8 +980,8 @@ if ($("body").attr("id")=="error"){
 			$("a:exact('check current status')").text("Перевірити");
 			$("p.general-text:contains('The elected president has not set any national goals for this month.')").text("Обраний президент був занадто ледачий, щоб виставити цілі。");
 			$("h2:exact('Monuments achieved')").text("Отримані монументи");
-			//社會地理
 			if (document.location.toString().indexOf("/country/society/")!==-1) {
+				// society
 				$("h2:exact('Citizens')").text("Населення");
 				$("span.fakeheight:eq(0)").text("Кількість");
 				$("span.fakeheight:eq(1)").text("Сьогодні зареєстровано");
@@ -990,9 +992,8 @@ if ($("body").attr("id")=="error"){
 				$("a.blue_arrow_small > span ").text("Переглянути");
 				$("a.details-small").text("Деталі");
 			};
-			//經濟統計
 			if (document.location.toString().indexOf("/country/economy/")!==-1) {
-				
+				// economy
 				$("h2:exact('Country resources')").text("Ресурси");
 				$("h2:exact('Treasury')").text("Скарбниця");
 				$("h2:exact('Country trading embargoes')").text("Торгові ембарго");
@@ -1038,7 +1039,6 @@ if ($("body").attr("id")=="error"){
 				$("span.vroundbtnh25-core:contains('Election results')").text("Результати виборів");
 				$("span.vroundbtnh25-core:contains('Next elections')").text("Наступні вибори");
 			};
-			
 			//軍事資訊
 			if (document.location.toString().indexOf("/country/military/")!==-1) {
 				$("table.info_message > tbody > tr > td").text("Громадяни цієї країни будуть забезпечені 10% бонусом на пошкодження у військовій кампанії проти кровного ворога.");
@@ -1199,7 +1199,7 @@ if ($("body").attr("id")=="error"){
 			$('ul.buildings > li.food:eq(3) > a > strong').text('Корівник');
 			$('ul.buildings > li.food:eq(4) > a > strong').text('Мисливський будиночок');
 			$('ul.buildings > li.weapon:eq(0) > a > strong').text('Залізна шахта');
-			$('ul.buildings > li.weapon:eq(1) > a > strong').text('Нафтова скважина');
+			$('ul.buildings > li.weapon:eq(1) > a > strong').text('Нафтова свердловина');
 			$('ul.buildings > li.weapon:eq(2) > a > strong').text('Алюмінієва шахта');
 			$('ul.buildings > li.weapon:eq(3) > a > strong').text('Шахта селітри');
 			$('ul.buildings > li.weapon:eq(4) > a > strong').text('Каучукова плантація');
@@ -1237,13 +1237,7 @@ if ($("body").attr("id")=="error"){
 			$('#production_status > table.stats > tbody > tr > td > .employee > .recommended_employees > a.manage_link').text('管理雇員');
 			$("table.info_message > tbody > tr > td:contains('You can view your market licences and sell products directly from your')").html('你可以直接檢視及販售自己 <a href="http://www.erepublik.com/en/economy/inventory" rel="noreferrer">倉庫</a> 中的產品.');
 			$("table.error_message > tbody > tr > td:contains('This company name is already used by another Erpk entity. Please choose another one.')").text('這個公司名稱已被他人使用, 建議重新選擇其它的名稱.');
-			if (document.location.toString().indexOf("/company/edit/")!==-1) {
-				// company edit
-				$('form#companyEditForm > h2:first').text('公司登記');
-				$("form#companyEditForm > .container_blue_border > .company_name > strong:contains('Company name')").text('公司名稱');
-				$("form#companyEditForm > .container_blue_border > strong.blued:contains('Company description')").text('關於此公司　　　');
-				$("form#companyEditForm > table > tbody > tr > td > a[title='Save changes'] > span").text('確定更改');
-			} else if (document.location.toString().indexOf("/company/sell/")!==-1) {
+			if (document.location.toString().indexOf("/company/sell/")!==-1) {
 				// company sell
 				$('.sell_company > h2:first').text('Продаж або закриття підприємства');
 				$('.sell_company > .disolve_company > h2:first').text('Закриття підприємства');
@@ -1253,35 +1247,6 @@ if ($("body").attr("id")=="error"){
 				$("table.info_message > tbody > tr > td:contains('This building cannot be sold nor dissolved.')").text('Підприємство не можете бути продане або закрите.')
 				//$("table.info_message > tbody > tr > td:contains('Dissolving a company will empty')").text('解散公司會清空土地上己有的建築物, 然後你可以再建造新的建築在上面.')
 				$("table.info_message > tbody > tr > td:contains('This company can be put on sale starting with')").replaceText('This company can be put on sale starting with','Це підприємство може бути поставлене на продаж після').replaceText('of the New World, at',' ').replaceText("(10 days since it was created or bought).","10 днів з часу заснування або купівлі");
-			} else if ((document.location.toString().indexOf("/company/employees/")!==-1) || (document.location.toString().indexOf("/company/job-offers/")!==-1)) {
-				// company employee
-				$('#employee_list > h2:first').text('管理雇員');
-				$("#employee_list > ul.ftabs > li > a[title='Employee list']").replaceText('Employee list','雇員清單');
-				$("#employee_list > ul.ftabs > li > a[title='Job offers']").replaceText('Job offers','工作職缺');
-				$('#employee_list > table > thead > tr.el_mainh > th.el_employee').text('雇員');
-				$('#employee_list > table > thead > tr.el_mainh > th.el_productivity > span:first').text('單位產量');
-				$('#employee_list > table > thead > tr.el_mainh > th.el_salary > a').text('日薪');
-				$('#employee_list > table > tbody > tr > td.el_salary > div > a.f_red_small > span').text('開除');
-				$("table.info_message > tbody > tr > td:contains('This company has no employees at the moment')").text('這間公司目前沒有任何雇員.')
-				// company job offer
-				$('#job_offers > h2:first').text('管理雇員');
-				$("#job_offers > ul.ftabs > li > a[title='Employee list']").replaceText('Employee list','雇員清單');
-				$("#job_offers > ul.ftabs > li > a[title='Job offers']").replaceText('Job offers','工作職缺');
-				$('#job_offers > table > thead > tr.jo_mainh > th.jo_ammount').text('職缺');
-				$('#job_offers > table > thead > tr.jo_mainh > th.jo_salary > a').text('日薪');
-				$("#job_offers > table > tbody > tr > td > div > a[title='Change'] > span").text('更改');
-				$("#job_offers > table > tbody > tr > td > div > a[title='Save'] > span").text('儲存');
-				$("table.info_message > tbody > tr > td:contains('This company has no job offers at the moment')").text('這間公司目前沒有任何職缺.')
-			} else if (document.location.toString().indexOf("/company/migrate/")!==-1) {
-				// company migrate
-				// -- my friend tell me this function will be removed in the future \o/ @blakcca
-			} else if (document.location.toString().indexOf("/company/customize/")!==-1) {
-				// company upgrade, downgrade
-				$('.product_design > h2:first').text('升級公司');
-				$('.product_design > .container_blue_border > h4:first').text('請選擇你想調整的公司等級');
-				$('.product_design > .container_blue_border > ul.packs > li > .product_detail > span').replaceText('Refund','退還').replaceText('Cost','花費').replaceText('Owned','已擁有');
-				$('.product_design > .container_blue_border > ul.packs > li > a.upgrade').text('升級');
-				$('.product_design > .container_blue_border > ul.packs > li > a.downgrade').text('降級');
 			};
 		};
 	};

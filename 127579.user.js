@@ -25,15 +25,15 @@ if ($("body").attr("id")=="error"){
 	//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 		$('strong#foodText').css('font-family','Arial,Arial');
 		// header
-		$("a.ambient_toggler > span").text("Увімкнути/вимкнути тло");
-		// eday
-		$("html body#homepage_feed div#container div#header div.header_info div span.eday").replaceText("Day","").replaceText(" of the New World","-й день Нового Світу");
-	  	//$("input#search_field.field").attr("value","Пошук громадян");
+		$("a.ambient_toggler > span").text("Показати/приховати тло");
+		//$("input#search_field.field").attr("value","Пошук громадян");
+		$("span.eday").replaceText("Day","").replaceText(" of the New World","-й день Нового Світу");
 		// common catalog
-		$('#menu ul li#menu2 a').css('background-image','url(\"http://img827.imageshack.us/img827/4124/maperepublikloggedukrv1.png\")');
-		$('#menu ul li#menu3 a').css('background-image','url(\"http://img827.imageshack.us/img827/4124/maperepublikloggedukrv1.png\")');
-		$('#menu ul li#menu4 a').css('background-image','url(\"http://img827.imageshack.us/img827/4124/maperepublikloggedukrv1.png\")');
-		$('#menu ul li#menu5 a').css('background-image','url(\"http://img827.imageshack.us/img827/4124/maperepublikloggedukrv1.png\")');
+		$('#menu ul li#menu2 a').css('background-image','url(\"http://img854.imageshack.us/img854/4124/maperepublikloggedukrv1.png\")');
+		$('#menu ul li#menu3 a').css('background-image','url(\"http://img854.imageshack.us/img854/4124/maperepublikloggedukrv1.png\")');
+		$('#menu ul li#menu4 a').css('background-image','url(\"http://img854.imageshack.us/img854/4124/maperepublikloggedukrv1.png\")');
+		$('#menu ul li#menu5 a').css('background-image','url(\"http://img854.imageshack.us/img854/4124/maperepublikloggedukrv1.png\")');
+		$('#menu ul li#menu6 a').css('background-image','url(\"http://img854.imageshack.us/img854/4124/maperepublikloggedukrv1.png\")');
 		$('#menu > ul > li#menu2').append('<ul>'+
 			'<li><a href=\"http://www.erepublik.com/en/economy/myCompanies\" targe="_self">Мої компанії</a></li>'+
 			'<li><a href=\"http://www.erepublik.com/en/economy/training-grounds\" targe="_self">Тренувальні майданчики</a></li>'+
@@ -73,11 +73,11 @@ if ($("body").attr("id")=="error"){
 		var healLimit = $('#eatFoodTooltip big.tooltip_health_limit').text();
 		$('#experienceTooltip').html('<img src=\"http://www.erepublik.com/images/modules/sidebar/yellow_arrow_tip.png\" class=\"tip\" alt=\"\" />'+
 			'Рівень досвіду: <strong> '+Explevel+'</strong><br />Поточний досвід: <strong>'+Exppoint+'</strong><br />Наступний рівень: <strong>'+Nextlevel+'</strong><br />');
-		$('#eatFoodTooltip > p:eq(0)').text('Їжте їжу із складу для відновлення здоров`я.');
+		$('#eatFoodTooltip > p:eq(0)').text('Споживайте їжу із складу для відновлення здоров`я.');
 		$('#eatFoodTooltip > p:eq(1)').html('Ви можете відновити <big>'+healLimit+'</big>');
 		$('#eatFoodTooltip > small').replaceText('100 more recoverable Health in','Наступні 100 хп Ви зможете відновити через')
 		$('#sidebar_missions > .content > b:first').text('Список активних місій:');
-		$('strong#foodText').text('Їсти їжу');
+		$('strong#foodText').text('Підкріпитися');
 		// others
 		$('a.logout').text('Вийти');
 		$('a.prev').text('Назад');
@@ -341,6 +341,13 @@ if ($("body").attr("id")=="error"){
 				$('.heading .c3 strong').text('Плата');
 			}
 		};
+		if (document.location.toString().indexOf("/main/rankings-")!==-1){
+			//! http://www.erepublik.com/en/main/rankings-*
+			//TODO Rankings pages is not translated. Working now.
+			if (document.location.toString().indexOf("citizens")!==-1){
+				
+			}
+		};
 		
 		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 		// 個人 www.erepublik.com/en/main/citizen
@@ -505,9 +512,9 @@ if ($("body").attr("id")=="error"){
 			$("#sell_flag > span").text('Придбати:');
 			$("a#change_currency.lighty.icon").attr("title","Обміняти місцями");
 			$("#buy_flag > span").text('Продати:');
-			$("#post_mine").text("Додати пропозицію").attr("title","Додати нову пропозицію обміну");
-			$("#my_offers").replaceText("My offers","Мої пропозиції").attr("title","Показати мої пропозиції");
-			$("a#my_offers.lighty").replaceText("All offers","Всі пропозиції");
+			$(".bar_actions > a:eq(0)").text("Додати пропозицію").attr("title","Додати нову пропозицію обміну");
+			$(".bar_actions > a:eq(1)").text("Мої пропозиції").attr("title","Показати мої пропозиції");
+			$(".bar_actions > a:eq(2)").text("Всі пропозиції");
 			//exchange_offers
 			$(".exchange_offers > thead > tr > th:[colspan='4']").text("Всі пропозиції");
 			$(".exchange_offers > thead > tr > th:contains('Citizen')").text("Хто");

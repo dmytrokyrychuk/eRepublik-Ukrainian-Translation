@@ -10,6 +10,32 @@
 // @require        https://raw.github.com/cowboy/jquery-replacetext/master/jquery.ba-replacetext.min.js
 // ==/UserScript==
 
+
+//ох уже цей баннер...
+$(".header_info").before('<div class="hip" style="float: left; display: none; widht: 425; height: 25; padding-left: 40px; padding-top: 10px;"><a href="" target="_blank"><img src=""></a></div>');
+$(".facebook_like").css("display","none");
+var GMTransport = function(url, onDone){
+    setTimeout(function(){GM_xmlhttpRequest({
+        method : "GET",
+        url : url,
+        onload : function(x) {
+          var o = x.responseText;
+          if (onDone) {
+            onDone(o);
+          }
+        }
+      });},0);
+}
+GMTransport('http://erep.byethost10.com/erep.json?callback=?', function(data){
+	data = $.parseJSON(data);
+	if (data.show == "true"){
+		$(".hip a").attr("href",data.url);
+		$(".hip a img").attr("src",data.img);
+		$(".hip").css("display","block");
+	}
+});
+
+
 	var lang = document.location.pathname.substr(1,2);
 	var host = document.location.hostname.split('.')[0];
 
@@ -19,7 +45,7 @@
 
 if ($("body").attr("id")=="error"){
 	$("div.errtxt > p").replaceText("Occasionally there are a couple of things which we need to check or to implement in order make your experience in eRepublik more pleasant.","На жаль, у нас виникли проблеми. Ми старанно працюємо над їх вирішенням.");
-} else {
+} else if ($("body").attr("id")!=="homepage_out"){
 	//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 	// Common strings
 	//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
@@ -29,11 +55,11 @@ if ($("body").attr("id")=="error"){
 		//$("input#search_field.field").attr("value","Пошук громадян");
 		$("span.eday").replaceText("Day","").replaceText(" of the New World","-й день Нового Світу");
 		// common catalog
-		$('#menu ul li#menu2 a').css('background-image','url(\"http://img854.imageshack.us/img854/4124/maperepublikloggedukrv1.png\")');
-		$('#menu ul li#menu3 a').css('background-image','url(\"http://img854.imageshack.us/img854/4124/maperepublikloggedukrv1.png\")');
-		$('#menu ul li#menu4 a').css('background-image','url(\"http://img854.imageshack.us/img854/4124/maperepublikloggedukrv1.png\")');
-		$('#menu ul li#menu5 a').css('background-image','url(\"http://img854.imageshack.us/img854/4124/maperepublikloggedukrv1.png\")');
-		$('#menu ul li#menu6 a').css('background-image','url(\"http://img854.imageshack.us/img854/4124/maperepublikloggedukrv1.png\")');
+		$('#menu ul li#menu2 a').css('background-image','url(\"http://dl.dropbox.com/u/68604040/maperepubliklogged-ukr-v1.png\")');
+		$('#menu ul li#menu3 a').css('background-image','url(\"http://dl.dropbox.com/u/68604040/maperepubliklogged-ukr-v1.png\")');
+		$('#menu ul li#menu4 a').css('background-image','url(\"http://dl.dropbox.com/u/68604040/maperepubliklogged-ukr-v1.png\")');
+		$('#menu ul li#menu5 a').css('background-image','url(\"http://dl.dropbox.com/u/68604040/maperepubliklogged-ukr-v1.png\")');
+		$('#menu ul li#menu6 a').css('background-image','url(\"http://dl.dropbox.com/u/68604040/maperepubliklogged-ukr-v1.png\")');
 		$('#menu > ul > li#menu2').append('<ul>'+
 			'<li><a href=\"http://www.erepublik.com/en/economy/myCompanies\" targe="_self">Мої компанії</a></li>'+
 			'<li><a href=\"http://www.erepublik.com/en/economy/training-grounds\" targe="_self">Тренувальні майданчики</a></li>'+
@@ -1258,3 +1284,10 @@ if ($("body").attr("id")=="error"){
 		};
 	};
 };
+
+
+
+
+
+
+

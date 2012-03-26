@@ -907,6 +907,9 @@ if ($("body").attr("id")=="error"){
 			$("#party_filters > .extended-menus > .core > .bordersep > h2:contains('Parties')").text('Будь ласка, виберіть політичну партію');
 			$("#dateSelect_filters > .extended-menus > .core > .bordersep > h2:contains('Month/Year')").text('Оберіть дату');
 			$("body#elections h2.special:contains('Official Results')").text('Офіційні результати');
+			$("h3:contains('Intermediate results')").text("Проміжні результати");
+			$(".release_countdown > p").html("Виборчий комітет перевіряє голоси, аби впевнитися в чесності виборів.<br><br>Дякуємо за розуміння!");
+			$(".release_countdown > .countdown_clock > small").text("Офіційні результати буде оголошено через:")
 			/*
 			"The elections committee is currently checking the votes to ensure the fairness of elections."<br><br>"Thank you for your patience!"
 			**на наступних виборах дописати

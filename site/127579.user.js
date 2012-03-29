@@ -3,7 +3,7 @@
 // @namespace      Ukrainian Translation
 // @author         CBAPTOR
 // @description    eRepublik Українська
-// @version        0.994
+// @version        0.993
 // @match          http://*.erepublik.com/*
 // @include        http://*.erepublik.com/*
 // @require        https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
@@ -12,6 +12,8 @@
 
 
 //ох уже цей баннер...
+$(".header_info").before('<div class="hip" style="float: left; display: none; widht: 425; height: 25; padding-left: 40px; padding-top: 10px;"><a href="" target="_blank"><img src=""></a></div>');
+$(".facebook_like").css("display","none");
 var GMTransport = function(url, onDone){
     setTimeout(function(){GM_xmlhttpRequest({
         method : "GET",
@@ -24,15 +26,13 @@ var GMTransport = function(url, onDone){
         }
       });},0);
 }
-GMTransport('http://localhost/banner.php?callback=?', function(data){
+GMTransport('http://erep.byethost10.com/erep.json?callback=?', function(data){
 	data = $.parseJSON(data);
-	if (data.status == "show"){
-		$(".header_info").before('<div class="hip" style="float: left; display: none; widht: 425; height: 25; padding-left: 40px; padding-top: 10px;"><a href="" target="_blank"><img src=""></a></div>');
-		$(".facebook_like").css("display","none");
+	if (data.show == "true"){
 		$(".hip a").attr("href",data.url);
 		$(".hip a img").attr("src",data.img);
-		$(".hip").css("display","block");		
-	};
+		$(".hip").css("display","block");
+	}
 });
 
 	var location = document.location.toString();
@@ -78,13 +78,12 @@ if ($("body").attr("id")=="error"){
 		$("#menu > ul > li#menu4 > ul > li > a:contains('Companies for sale')").text('Компанії на продаж');
 		$("#menu > ul > li#menu5 > ul > li > a:contains('World Map')").text('Мапа світу');
 		$("#menu > ul > li#menu5 > ul > li > a:contains('My Party')").text('Моя партія');
-		$("#menu > ul > li#menu5 > ul > li > a:contains('Elections')").text('Виборчий комітет');
+		$("#menu > ul > li#menu5 > ul > li > a:contains('Elections')").text('Вибори');
 		$("#menu > ul > li#menu5 > ul > li > a:contains('Military Unit')").text('Військовий Підрозділ');
 		$("#menu > ul > li#menu5 > ul > li > a:contains('Invite friends')").text('Запросити друзів');
 		$("#menu > ul > li#menu5 > ul > li > a:contains('Badges')").text('Рекламні банери');
 		$('#menu > ul > li#menu5 > ul').prepend('<li><a href=\"http://www.erepublik.com/en/news/latest/all\" target="_self">Останні новини</a></li>');
 		$('#menu > ul > li#menu5 > ul').append(
-			'<li><a href=\"http://www.erepublik.com/en/newspaper/president-of-eukraine-242674/1/" target="_blank">Президент єУкраїни</a></li>'+
 			'<li><a href=\"http://www.erepublik.com/en/newspaper/education-of-eukraine-271249/1/" target="_blank">Міністерство Освіти</a></li>'+
 			'<li><a href=\"http://www.erepublik.com/en/newspaper/diplomacy-of-eukraine-192017/1/" target="_blank">Міністерство Зовнішніх Справ</a></li>'+
 			'<li><a href=\"http://www.erepublik.com/en/newspaper/demography-news-240441/1/" target="_blank">Міністерство Демографії</a></li>'+
@@ -136,10 +135,6 @@ if ($("body").attr("id")=="error"){
 			$('#orderContainer > div > strong').text($('#orderContainer > div > strong').text().replace('Fight for','Боріться за ')+'. Вбито ворожих солдат:');
 			$('#orderContainer > div > a.blue_beauty').text('До битви');
 			$('#orderContainer > div > a.green_beauty').text('Винагорода');
-			$(".wcontent h3").text("Щоденний наказ виконано");
-			$(".wcontent a").text("Отримати бонус");
-			$(".wcontent #result_salary small").text("Різних частин базуки");
-			$(".wcontent #result_products small").text("Батончик");
 			// daily task
 			$('.column > .boxes.daily_tasks > h1').text('Щоденні дії');
 			$('.column > .boxes.daily_tasks > div > strong').text('Працюйте та тренуйтеся');
@@ -156,7 +151,7 @@ if ($("body").attr("id")=="error"){
 			$("#battle_listing > h4:exact('Campaign of the day')").text('Битва дня');
 			$("#battle_listing > h4:contains('Allies')").text('Битви за союзників');
 			$("#battle_listing > h4:contains('Campaigns')").text('Поточні битви '+$("#battle_listing > h4:contains('Campaigns')").replaceText('Campaigns',' ').text());
-			$("#battle_listing span:exact('Fight')").text('До битви');
+			$("#battle_listing span:exact('Fight')").text('ВОГОНЬ!');
 			$('#battle_listing .rest > a:eq(0)').text('Військові кампанії');
 			$('#battle_listing .rest > a:eq(1)').text('Останні події');
 			$('#battle_listing > ul.resistance_war').find('a#fundRW_btn > span').text('Допомогти');
@@ -179,7 +174,7 @@ if ($("body").attr("id")=="error"){
 				$(this).replaceText('and','та').replaceText('voted this.','підтримав(ли) це');});
 			$('#citizen_feed > .previous_posts > a > span').text('Попередні записи');
 			// news list
-			$('#news.box > .title > h1:first').text('Преса');
+			$('#news.box > .title > h1:first').text('Категорії новин');
 			$('#articles > div > a.mbutton:eq(0) > span').text('Перші кроки в грі');
 			$('#articles > div > a.mbutton:eq(1) > span').text('Військові накази');
 			$('#articles > div > a.mbutton:eq(2) > span').text('Аналіз військових подій');
@@ -237,11 +232,11 @@ if ($("body").attr("id")=="error"){
 					$('small > span') .replaceText("Don't worry about your current health. If necessary, you will be eating food automatically. Just make sure you have enough food in inventory and enough health left to recover.",'Їжа використовується автоматично, якщо вона є у Вас у сховищі.');
 					$('small > span') .replaceText("The employees are no longer working in a specific company, but they work for the manager. They come to work and get their salary paid, but they are not producing anything until you decide where to use them.",'Наймані працівники вже не працюють в певному підприємстві. Вони віддають Вам свою працю і отримують за це зарплатню. На яких підприємствах використати їхню працю, Ви вирішуєте самі.');
 					$('small > span') .replaceText("Each company type can support a limited number of employees. Upgrading companies or buying better raw materials companies can increase the number of employees you can hire an assign.",'Кількість працівників, що можуть відпрацювати на певному підприємстві, залежать від його рівня.');
-					$('small > span') .replaceText("You can start production as many times you want during a day as long as you still have unassigned employees or companies you didn't work in as a manager yet. However, it will be easier for you to start production only once a day.",'Ви можете починати виробництво безліч разів на добу. За умови, що ще залишилися місця де не відпрацювали працівники або Ви самі.');
+					$('small > span') .replaceText("You can start production as many times you want during a day as long as you still have unassigned employees or companies you didn't work in as a manager yet. However, it will be easier for you to start production only once a day.",'Ви можете починати виробнитство безліч разів на добу. За умови, що ще залишилися місця де не відпрацювали працівники або Ви самі.');
 					$('.main > span') .text('Далі');
 				});
 				$('.solid_pop .inner .message > div.text > h4.food_warning') .replaceText('Not enough food to eat in order to recover health','Недостатньо їжі в сховищі');
-				$('.solid_pop .inner .message > div.text > h4.health_warning') .replaceText('Health limit exceeded','Здоров`я ще не відновилося');
+				$('.solid_pop .inner .message > div.text > h4.health_warning') .replaceText('Health limit exceeded','Здоров`ще не відновилося');
 				$('.solid_pop .inner .message > div.text > h4.storage_warning') .replaceText('Storage limit exceeded','Недостатньо місця в сховищі');
 				$('.solid_pop .inner .message > div.text > h4.works_warning') .replaceText('Too many employees assigned','Надто багато працівників розміщено');
 				$('.solid_pop .inner .message > div.text > h4.raw_warning') .replaceText('Not enough raw materials','Недостатньо сировини');
@@ -258,7 +253,7 @@ if ($("body").attr("id")=="error"){
 				$('.solid_pop .action span') .replaceText('Cancel','Скасувати');
 				$('#energy_bar_pop .solid_pop h4').text("Батончики будуть використані для відновлення здоров'я");
 				$('#energy_bar_pop a#consume_energy span').text("Почати виробництво");
-				$('#production_results h1').text("Результати:");
+				$('#production_results h1').text("Виробництво");
 				$('#production_results .details_holder strong:first').text("Бонуси");
 				$('#production_results .details_holder strong.production_stats').text("Результат");
 				$('#production_results .details_holder ul:eq(1) > li:eq(0)').attr("title","Залишилось працювати днів, щоб отримати медаль Сумлінного Працівника");
@@ -273,8 +268,8 @@ if ($("body").attr("id")=="error"){
 				$('.hard_worker p span').replaceText("days","днів, ");
 				$('a.more_details').attr("title","Показати деталі");
 				$('a.more_details span').text("Показати деталі");
-				$('.manager_dashboard .green_enlarged span') .replaceText('Start production','Почати виробництво');
-				$('.manager_dashboard .list .area .green_enlarged') .attr('title','Почати виробництво');
+				$('.manager_dashboard .green_enlarged span') .replaceText('Start production','Почати виробнитство');
+				$('.manager_dashboard .list .area .green_enlarged') .attr('title','Почати виробнитство');
 				$(".warning_notice").text("Не вистачає грошей, щоб заплатити працівникам за один день.");
 				$(".c1 > strong").text("Компанії");
 				$(".c2 > strong").text("Працівники");
@@ -283,12 +278,12 @@ if ($("body").attr("id")=="error"){
 				$(".heading > .c5 > strong").text("Результат");
 				$(".grey_plastic.left_pos").attr("title","Заснувати компанію");
 				$(".grey_plastic.mid").attr("title","Продати/Знищити компанію");
-				$(".grey_plastic.right_pos").attr("title","Покращити/Погіршити компанію");
+				$(".grey_plastic.right_pos").attr("title","Покращити/Понизити компанію");
 				$(".c2 > a").attr("title","Керувати працівниками");
 				$(".c4 > a").attr("title","Купити на ринку");
 				$(".employees_available > em").text("Призначено працівників");
 				$(".raw_materials > em").text("Ресурси");
-				$("#start_production > span").text("Почати виробництво");
+				$("#start_production > span").text("Почати виробнитство");
 			} else if (location.indexOf("/training-grounds")!==-1){
 				//! www.erepublik.com/en/economy/training-grounds
 				// Training grounds
@@ -305,19 +300,6 @@ if ($("body").attr("id")=="error"){
 				$(".gold_cost > em").text("Золото");
 				$(".gold_cost > strong").attr("title","Необхідно золота");
 				$("a#start_train.green_enlarged").html("<span>Тренуватися</span>").attr("title","Тренуватися");
-				// poopup
-				$(".solid_pop > a").attr("title","Закрити вікно").text("Закрити");
-				$("#train_results .fixer > h1").text("Результати тренування");
-				$("#train_results .fixer > .inner > .details_holder > div > strong").text("Статистика");
-				$("#train_results .fixer > .inner > .details_holder > div > p").text("Бонус Природного ворога та бонус друзів більше не діють");
-				$("#train_results .fixer > .inner > .hard_worker > p").replaceText("You need an additional","Необхідно ще ").replaceText("to get the Super Soldier Medal.",", щоб отримати медаль Котигорошка.");
-				$("#train_results .fixer > .inner > .hard_worker > p > span").replaceText("strength points","сили");
-				$("#train_results .fixer > .inner > a").text("Деталі").attr("Показати деталі");
-				$("#train_results .fixer > .inner > .details_holder > div > ul > li:eq(0)").attr("title","Зараз сили");
-				$("#train_results .fixer > .inner > .details_holder > div > ul > li:eq(1)").attr("title","Досвід");
-				$("#train_results .fixer > .inner > .details_holder > div > ul > li:eq(2)").attr("title","Витрачено здоров'я");
-				$("#train_results .fixer > .inner > .details_holder > div > ul > li:eq(3)").attr("title","Витрачено золота");
-				$("#train_results .fixer > .inner > .details_holder > div > ul > li:eq(10)").attr("title","Потрачено батончиків");
 			} else if (location.indexOf("/inventory")!==-1) {
 				//! www.erepublik.com/en/economy/inventory
 				// Storage
@@ -329,7 +311,7 @@ if ($("body").attr("id")=="error"){
 				$('#inventory_overview > h2:first > img.storage_tooltip').attr('title','Якщо Ви хочете збільшити ємність, побудуйте додаткові сховища.');
 				$('#inventory_overview > .items_holder > h4:eq(0)').text('Товар');
 				$('#inventory_overview > .items_holder > h4:eq(1)').text('Сировина');
-				$('#inventory_overview > .items_holder > h4:eq(2)').text('Скласти РПГ');
+				$('#inventory_overview > .items_holder > h4:eq(2)').text('Зібрати РПГ');
 				$("ul.product_list > li:[industry='1'] > img").each(function() {$(this).attr("title","Споживання їжі відновлює ваше здоров`я")});
 				$("ul.product_list > li:[industry='2'] > img").each(function() {$(this).attr("title","Використання зброї збільшує завдавані вами пошкодження")});
 				$(".item_mask > ul > li:eq(0) > img").attr("title","Сировина, необхідна для виготовлення їжі");//should work, but it doesn't! wtf?
@@ -339,10 +321,10 @@ if ($("body").attr("id")=="error"){
 				$(".collection_list > ul > li:[title='M6A3 Rocket']").attr('title','Ракета');
 				$(".collection_list > ul > li:[title='Trigger Kit']").attr('title','Спусковий модуль');
 				$(".collection_list > ul > li:[title='Stock']").attr('title','Приклад');
-				$('.collection_list > a.assemble').text('Скласти').attr('title','Скласти');
+				$('.collection_list > a.assemble').text('Зібрати').attr('title','Скласти');
 				$('.collection_list > .bazooka > .details > strong').html('РПГ'+
 					'<img src="http://www.erepublik.com/images/modules/storage/info.png" alt="" class="storage_tooltip" original-title="Ви можете знайти ці деталі на полі бою або отримати як винагороду за виконання добового наказу.">');
-				$('.collection_list > .bazooka > .details > small').text('Один постріл - один труп');
+				$('.collection_list > .bazooka > .details > small').text('Один постріл - одне вбивство');
 				$('.collection_list > .bazooka > .details > p:eq(0)').attr('title','К-сть пострілів');
 				$('.collection_list > .bazooka > .details > p:eq(1)').attr('title','Пошкодження');
 				$('.collection_list > .bazooka > .details > p:eq(1) > span').text('10000 за постріл');
@@ -382,6 +364,7 @@ if ($("body").attr("id")=="error"){
 		};
 		if (location.indexOf("/main/rankings-")!==-1){
 			//! http://www.erepublik.com/en/main/rankings-*
+			//TODO Rankings pages is not translated. Working now.
 			$(".ranking_filters > li:eq(0) > a > span").text("Громадяни");
 			$(".ranking_filters > li:eq(1) > a > span").text("Партії");
 			$(".ranking_filters > li:eq(2) > a > span").text("Газети");
@@ -482,7 +465,7 @@ if ($("body").attr("id")=="error"){
 			$('.citizen_content > h3.mbot2:eq(1)').html('Досягнення');
 			// achievment
 			$("ul#achievment > li:eq(0) > .hinter > span > p:eq(0) > strong").text("Сумлінний Працівник");
-			$("ul#achievment > li:eq(0) > .hinter > span > p:eq(1)").text("Відпрацювати 30 днів підряд");
+			$("ul#achievment > li:eq(0) > .hinter > span > p:eq(1)").text("Відпрацюй 30 днів підряд");
 			$("ul#achievment > li:eq(1) > .hinter > span > p:eq(0) > strong").text("Член Конгресу");
 			$("ul#achievment > li:eq(1) > .hinter > span > p:eq(1)").text("Перемога на виборах до Конгресу");
 			$("ul#achievment > li:eq(2) > .hinter > span > p:eq(0) > strong").text("Президент");
@@ -676,7 +659,7 @@ if ($("body").attr("id")=="error"){
 				$('#enemy_defeated > .content > div#natural_enemy_bonus > strong').text('Бонус кровного ворога');
 				$('#enemy_defeated > .content > div:eq(2) > strong').text('Військовий досвід');
 				$('#enemy_defeated > .content > div:eq(3) > strong').text('Досвід');
-				$('#enemy_defeated > a#add_damage_btn').text('Вбити ще');
+				$('#enemy_defeated > a#add_damage_btn').text('Добре');
 				// rank-up-pop-box
 				$('#rank_up > .heading > p').text('Вітаємо, Ваше звання підвищується до');
 				$('#rank_up > .content > div:eq(0) > strong').text('Винагорода');
@@ -688,7 +671,7 @@ if ($("body").attr("id")=="error"){
 				$('#collection_complete.bazooka_pop > strong').text('Агов, та ти ж зібрав брухту на РПГ!');
 				$("#collection_complete.bazooka_pop > a[title='Скласти РПГ']").text('Зібрати');
 				$("#timer > div > strong:contains('Are you')").text('Не заснув?');
-				$("#timer > div > a > span:contains('still here')").text('Я тут...тут...ХРРР...ХРРР');
+				$("#timer > div > a > span:contains('still here')").text('Та ні, лише позіхаю');
 				// change location
 				$('#options_box > p.info').text('Вам потрібно переїхати в одну з країн для участі в битві. Зробити це зараз?');
 				$('#options_box > a#change_location.fluid_blue_dark > span').text('Так, звісно!');

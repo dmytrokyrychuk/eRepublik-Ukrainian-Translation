@@ -23,8 +23,13 @@ var GMTransport = function(url, onDone){
           }
         }
       });},0);
+<<<<<<< HEAD
 };
 GMTransport('http://erep.byethost10.com/banner.php', function(data){
+=======
+}
+GMTransport('http://erep.byethost10.com/banner.php?callback=?', function(data){
+>>>>>>> 6e231feb271e3f7f733093ad213c1ec720f8a7b2
 	data = $.parseJSON(data);
 	if (data.status == "show"){
 		$(".header_info").before('<div class="hip" style="float: left; display: none; widht: 425; height: 25; padding-left: 40px; padding-top: 10px;"><a href="" target="_blank"><img src=""></a></div>');

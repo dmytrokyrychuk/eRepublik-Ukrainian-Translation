@@ -23,8 +23,8 @@ var GMTransport = function(url, onDone){
           }
         }
       });},0);
-}
-GMTransport('http://localhost/banner.php?callback=?', function(data){
+};
+GMTransport('http://erep.byethost10.com/banner.php', function(data){
 	data = $.parseJSON(data);
 	if (data.status == "show"){
 		$(".header_info").before('<div class="hip" style="float: left; display: none; widht: 425; height: 25; padding-left: 40px; padding-top: 10px;"><a href="" target="_blank"><img src=""></a></div>');
@@ -1093,14 +1093,14 @@ if ($("body").attr("id")=="error"){
 				$("th:exact('Income Tax')").text("Прибутковий податок");
 				$("th:exact('Import Tax')").text("Імпортне мито");
 				$("th:exact('VAT')").text("ПДВ");
-				$("span.fakeheight:contains('Food')").text("Їжа");
-				$("span.fakeheight:contains('Weapons')").text("Зброя");
-				$("span.fakeheight:contains('House')").text("Будинки");
-				$("span.fakeheight:contains('Moving Tickets')").text("Квитки");
-				$("span.fakeheight:contains('Food Raw Material')").text("Зерно");
-				$("span.fakeheight:contains('Weapon Raw Material')").text("Залізо");
-				$("span.fakeheight:contains('Hospital')").text("Шпиталі");
-				$("span.fakeheight:contains('Defense System')").text("Захисні системи");
+				$("span.fakeheight:exact('Food')").text("Їжа");
+				$("span.fakeheight:exact('Weapons')").text("Зброя");
+				$("span.fakeheight:exact('House')").text("Будинки");
+				$("span.fakeheight:exact('Moving Tickets')").text("Квитки");
+				$("span.fakeheight:exact('Food Raw Material')").text("Зерно");
+				$("span.fakeheight:exact('Weapon Raw Material')").text("Залізо");
+				$("span.fakeheight:exact('Hospital')").text("Шпиталі");
+				$("span.fakeheight:exact('Defense System')").text("Захисні системи");
 				$("h2:exact('Salary')").text("Мінімальна ЗП");
 				$("span.fakeheight:exact('Minimum')").text("Мінімальна");
 				$("span.fakeheight:exact('Average')").text("Середня");

@@ -1,4 +1,5 @@
-﻿// ==UserScript==
+﻿
+// ==UserScript==
 // @name           eRepublik Ukrainian Translation
 // @namespace      Ukrainian Translation
 // @author         CBAPTOR
@@ -23,13 +24,8 @@ var GMTransport = function(url, onDone){
           }
         }
       });},0);
-<<<<<<< HEAD
 };
 GMTransport('http://erep.byethost10.com/banner.php', function(data){
-=======
-}
-GMTransport('http://erep.byethost10.com/banner.php?callback=?', function(data){
->>>>>>> 6e231feb271e3f7f733093ad213c1ec720f8a7b2
 	data = $.parseJSON(data);
 	if (data.status == "show"){
 		$(".header_info").before('<div class="hip" style="float: left; display: none; widht: 425; height: 25; padding-left: 40px; padding-top: 10px;"><a href="" target="_blank"><img src=""></a></div>');
@@ -39,6 +35,7 @@ GMTransport('http://erep.byethost10.com/banner.php?callback=?', function(data){
 		$(".hip").css("display","block");		
 	};
 });
+$("#show_facebook_feed").css("display","none");
 
 	var location = document.location.toString();
 	var lang = document.location.pathname.substr(1,2);
@@ -540,9 +537,9 @@ if ($("body").attr("id")=="error"){
 				$('.citizen_sidebar > div > .citizen_second > small:eq(2)').replaceText('Forfeit points','Бали попереджень');
 				$('.citizen_content > h2.special').text('Зміна місцезнаходження');
 				$('.citizen_content > .current_location > h4').text('Поточне місцезнаходження');
-				$('.citizen_content > form > .new__location > h4').text('Нове місцезнаходження');
-				$('.citizen_content > form > .new__location > #selects > small:eq(0)').replaceText('Moving distance:','　Відстань:　');
-				$('.citizen_content > form > .new__location > #selects > small:eq(1)').replaceText('Travelling cost:','　Вартість:　');
+				$('.citizen_content > form > .new___location > h4').text('Нове місцезнаходження');
+				$('.citizen_content > form > .new___location > #selects > small:eq(0)').replaceText('Moving distance:','　Відстань:　');
+				$('.citizen_content > form > .new___location > #selects > small:eq(1)').replaceText('Travelling cost:','　Вартість:　');
 				$('.citizen_content > form > a#move > span').text('Переїхати');
 			} else if (location.indexOf("/change-password")!==-1) {
 				// change password tab
@@ -736,12 +733,12 @@ if ($("body").attr("id")=="error"){
 			$("h1:first:exact('Political debates and analysis News')").text('Політичні дебати');
 			$("h1:first:exact('Financial business News')").text('Економіка та фінанси');
 			$("h1:first:exact('Social interactions and entertainment News')").text('Новини суспільства');
-			$('#filters > .rightfilters > .core > ul.new_s_filters > li:eq(0) > a').attr('title','Нові інструкції та освіта');
-			$('#filters > .rightfilters > .core > ul.new_s_filters > li:eq(1) > a').attr('title','Повідомлення військового командування');
-			$('#filters > .rightfilters > .core > ul.new_s_filters > li:eq(2) > a').attr('title','Стратегічний аналіз');
-			$('#filters > .rightfilters > .core > ul.new_s_filters > li:eq(3) > a').attr('title','Політичні обговорення та їх аналіз');
-			$('#filters > .rightfilters > .core > ul.new_s_filters > li:eq(4) > a').attr('title','Економічний фокус');
-			$('#filters > .rightfilters > .core > ul.new_s_filters > li:eq(5) > a').attr('title','Соціальні розваги');
+			$('#filters > .rightfilters > .core > ul.new__s_filters > li:eq(0) > a').attr('title','Нові інструкції та освіта');
+			$('#filters > .rightfilters > .core > ul.new__s_filters > li:eq(1) > a').attr('title','Повідомлення військового командування');
+			$('#filters > .rightfilters > .core > ul.new__s_filters > li:eq(2) > a').attr('title','Стратегічний аналіз');
+			$('#filters > .rightfilters > .core > ul.new__s_filters > li:eq(3) > a').attr('title','Політичні обговорення та їх аналіз');
+			$('#filters > .rightfilters > .core > ul.new__s_filters > li:eq(4) > a').attr('title','Економічний фокус');
+			$('#filters > .rightfilters > .core > ul.new__s_filters > li:eq(5) > a').attr('title','Соціальні розваги');
 			$('#filters > .rightfilters > .core > .your_subs').html('</br>Ви в даний час підписані на <strong>'+$("#filters > .rightfilters > .core > .your_subs > strong").text()+'</strong> газет<a href="javascript:;" class="fluid_blue_dark" onclick="$j(\'.asubs\').toggle();" title=""><span>Змінити</span></a>');
 			$('#filters > .rightfilters > .asubs > .acontrols > a.aselectall').text('Обрати всі');
 			$('#filters > .rightfilters > .asubs > .acontrols > a#unsubscribeAction > span').text('Відписатися');
@@ -761,7 +758,7 @@ if ($("body").attr("id")=="error"){
 			$("a:contains('Social interactions and entertainment')").html('<img src="http://www.erepublik.com/images/modules/news/icons/cat_5.png"> Новини суспільства');
 		} else if ((location.indexOf("/article/")!==-1) || (location.indexOf("/newspaper/")!==-1)) {
 			// newspaper, article
-			$('body#newspaper > #container > #content > h2.new_spaper_section').text('про це пише газета');
+			$('body#newspaper > #container > #content > h2.new__spaper_section').text('про це пише газета');
 			$('.profilemenu > li > a.houdini.subscribeToNewspaper').text('Підписатися');
 			$('.profilemenu > li > a.houdini.unsubscribeFromNewspaper').text('Відписатися');
 			$(".profilemenu > li > a:exact('Write article')").text('Написати статтю');
@@ -777,7 +774,7 @@ if ($("body").attr("id")=="error"){
 			$('a#comments_button_on > span').replaceText('Comments','Коментарі');
 			$('#subscribe_comments > form > .submitpost-start > .submitpost-core > p.padded').text('Ваше повідомлення');
 			$("#subscribe_comments > form > .submitpost-start > .submitpost-core > input.submit[name='commit']").attr('value','Додати повідомлення');
-			$('a.report.new_spaper').text('доповіді цієї газети');
+			$('a.report.new__spaper').text('доповіді цієї газети');
 			$('a.report.articlereport').text('Повідомити про цю статтю');
 			$('a.shower.report.commentswitch').text('Поскаржитися на коментарі');
 			$('a.report.onz.commentcontent').text('Поскаржитися');
@@ -1331,10 +1328,3 @@ if ($("body").attr("id")=="error"){
 		};
 	};
 };
-
-
-
-
-
-
-

@@ -1,10 +1,9 @@
-﻿
-// ==UserScript==
+﻿// ==UserScript==
 // @name           eRepublik Ukrainian Translation
 // @namespace      Ukrainian Translation
 // @author         CBAPTOR
 // @description    eRepublik Українська
-// @version        0.994
+// @version        0.9953
 // @match          http://*.erepublik.com/*
 // @include        http://*.erepublik.com/*
 // @require        https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
@@ -25,17 +24,19 @@ var GMTransport = function(url, onDone){
         }
       });},0);
 };
+
 GMTransport('http://erep.byethost10.com/banner.php', function(data){
-	data = $.parseJSON(data);
-	if (data.status == "show"){
-		$(".header_info").before('<div class="hip" style="float: left; display: none; widht: 425; height: 25; padding-left: 40px; padding-top: 10px;"><a href="" target="_blank"><img src=""></a></div>');
+   data = $.parseJSON(data);
+   if (data.status == "show"){
+     $(".header_info").before('<div class="hip" style="float: left; display: none; widht: 425; height: 25; padding-left: 40px; padding-top: 10px;"><a href="" target="_blank"><img src=""></a></div>');
+
+
 		$(".facebook_like").css("display","none");
 		$(".hip a").attr("href",data.url);
 		$(".hip a img").attr("src",data.img);
 		$(".hip").css("display","block");		
 	};
 });
-$("#show_facebook_feed").css("display","none");
 
 	var location = document.location.toString();
 	var lang = document.location.pathname.substr(1,2);
@@ -53,48 +54,61 @@ if ($("body").attr("id")=="error"){
 	//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 		$('strong#foodText').css('font-family','Arial,Arial');
 		// header
+		$('div#header > div#logo > a').css('background-image','url(\"http://dl.dropbox.com/u/68604040/erepui2.png\")')
 		$("a.ambient_toggler > span").text("Показати/приховати тло");
 		//$("input#search_field.field").attr("value","Пошук громадян");
 		$("span.eday").replaceText("Day","").replaceText(" of the New World","-й день Нового Світу");
 		// common catalog
-		$('#menu ul li#menu2 a').css('background-image','url(\"http://dl.dropbox.com/u/68604040/maperepubliklogged-ukr-v1.png\")');
-		$('#menu ul li#menu3 a').css('background-image','url(\"http://dl.dropbox.com/u/68604040/maperepubliklogged-ukr-v1.png\")');
-		$('#menu ul li#menu4 a').css('background-image','url(\"http://dl.dropbox.com/u/68604040/maperepubliklogged-ukr-v1.png\")');
-		$('#menu ul li#menu5 a').css('background-image','url(\"http://dl.dropbox.com/u/68604040/maperepubliklogged-ukr-v1.png\")');
-		$('#menu ul li#menu6 a').css('background-image','url(\"http://dl.dropbox.com/u/68604040/maperepubliklogged-ukr-v1.png\")');
-		$('#menu > ul > li#menu2').append('<ul>'+
-			'<li><a href=\"http://www.erepublik.com/en/economy/myCompanies\" targe="_self">Мої компанії</a></li>'+
+		$(".facebook_like").css("display","none");
+		$('#menuText ul li#menu1 a').css('background-image','url(\"http://dl.dropbox.com/u/68604040/EREP/menu_erepublik.png\")');
+		$('#menuText ul li#menu2 a').css('background-image','url(\"http://dl.dropbox.com/u/68604040/EREP/menu_erepublik.png\")');
+		$('#menuText ul li#menu3 a').css('background-image','url(\"http://dl.dropbox.com/u/68604040/EREP/menu_erepublik.png\")');
+		$('#menuText ul li#menu2 a span').text('Моя господа');
+		$('#menuText ul li#menu3 a span').text('Битви');
+		$('#menuText ul li#menu4 a span').text('Ринок');
+		$('#menuText ul li#menu5 a span').text('Спільнота');
+		$('#menuText ul li#menu6 a span').text('Золото та бонуси');
+		$('#menuText > ul > li#menu2').append('<ul>'+
+			'<li><a href=\"http://www.erepublik.com/en/economy/myCompanies\" targe="_self">Моя господа</a></li>'+
 			'<li><a href=\"http://www.erepublik.com/en/economy/training-grounds\" targe="_self">Тренувальні майданчики</a></li>'+
 			'<li><a href=\"http://www.erepublik.com/en/economy/inventory\" targe="_self">Сховище</a></li>'+
 			'<li><a href=\"http://www.erepublik.com/en/economy/health-expansions\" targe="_self">Санаторії</a></li>'+
 			'</ul>'
 		);
-		$('#menu > ul > li#menu3').append('<ul>' +
-			'<li><a href=\"http://www.erepublik.com/' +lang+ '/newspaper/mod-bulletin-189504/1\" target="_self">Накази Мін Оборони</a></li>' +
-		     '<li><a href=\"http://egov4you.info/\" target="_self">egov4you.info</a></li>' +
+		$('#menuText > ul > li#menu3').append('<ul>' +
+			'<li><a href=\"http://www.erepublik.com/en/military/campaigns/\" target="_self">Битви</a></li>' +
+			'<li><a href=\"http://www.erepublik.com/en/newspaper/mod-bulletin1-188570/1/\" target="_self">Накази Мін Оборони</a></li>' +
+			'<li><a href=\"http://egov4you.info/\" target="_self">egov4you.info - Пульс</a></li>' +
+			'<li><a href=\"http://erep.root.se/\" target="_self">Калькулятор пошкоджень</a></li>' +
 			'<li><a href=\"http://erep.maxihellas.com/\" target="_self">erep.maxihellas</a></li>');
-		$("#menu > ul > li#menu4 > ul > li > a:contains('Marketplace')").text('Ринок');
-		$("#menu > ul > li#menu4 > ul > li > a:contains('Monetary')").text('Валютний ринок');
-		$("#menu > ul > li#menu4 > ul > li > a:contains('Job')").text('Центр зайнятості');
-		$("#menu > ul > li#menu4 > ul").append('<li><a href=\"http://erepublik-market.com/weapons.html" target="_self">erepublik-market</a></li></ul>')
-		$("#menu > ul > li#menu4 > ul > li > a:contains('Companies for sale')").text('Компанії на продаж');
-		$("#menu > ul > li#menu5 > ul > li > a:contains('World Map')").text('Мапа світу');
-		$("#menu > ul > li#menu5 > ul > li > a:contains('My Party')").text('Моя партія');
-		$("#menu > ul > li#menu5 > ul > li > a:contains('Elections')").text('Виборчий комітет');
-		$("#menu > ul > li#menu5 > ul > li > a:contains('Military Unit')").text('Військовий Підрозділ');
-		$("#menu > ul > li#menu5 > ul > li > a:contains('Invite friends')").text('Запросити друзів');
-		$("#menu > ul > li#menu5 > ul > li > a:contains('Badges')").text('Рекламні банери');
-		$('#menu > ul > li#menu5 > ul').prepend('<li><a href=\"http://www.erepublik.com/en/news/latest/all\" target="_self">Останні новини</a></li>');
-		$('#menu > ul > li#menu5 > ul').append(
+		$("#menuText > ul > li#menu4 > ul > li > a:contains('Marketplace')").text('Ринок');
+		$("#menuText > ul > li#menu4 > ul > li > a:contains('Monetary')").text('Валютний ринок');
+		$("#menuText > ul > li#menu4 > ul > li > a:contains('Job')").text('Центр зайнятості');
+		$('#menuText > ul > li#menu4 > ul').append(
+			'<li><a href=\"http://erepublik-market.com/weapons.html" target="_blank">erepublik-market</a></li>'+
+			'<li><a href=\"skype:?chat&blob=_tUo1OdHTC5jlL-3KU6ALs2bzMt4-nqK5CH7BZ8k2lZ13HnWfrSN_MkLzLMG-YYmKSTwQDvm-Jws3U4N2dBr0URH3HnYzJFF-ZGGSHqZkg-PAXXqCwyjPj20A4SNsMwrzop6Rq2rKQfhcb8PQxYWj8ej5oDFmKEItHYYO12prjODgokoS2HOMF-fV0uLIL1FCQ" target="_blank">Чорний ринок</a></li>'+
+			'<li><a href=\"http://erep-stats.com/calculators/company/" target="_blank">Калькулятор прибутку</a></li>');
+		$("#menuText > ul > li#menu4 > ul > li > a:contains('Companies for sale')").text('Компанії на продаж');
+		$("#menuText > ul > li#menu5 > ul > li > a:contains('World map')").text('Мапа світу');
+		$("#menuText > ul > li#menu5 > ul > li > a:contains('My party')").text('Моя партія');
+		$("#menuText > ul > li#menu5 > ul > li > a:contains('Elections')").text('Виборчий комітет');
+		$("#menuText > ul > li#menu5 > ul > li > a:contains('Military unit')").text('Військовий Підрозділ');
+		$("#menuText > ul > li#menu5 > ul > li > a:contains('Invite friends')").text('Запросити друзів');
+		$("#menuText > ul > li#menu5 > ul > li > a:contains('Badges')").text('Рекламні банери');
+		$('#menuText > ul > li#menu5 > ul').prepend('<li><a href=\"http://www.erepublik.com/en/news/latest/all\" target="_self">Останні новини</a></li>'+
+		'<li><a href=\"http://www.erepublik.com/en/country-administration/Ukraine/1\" target="_self">Закони є України</a></li>');
+		$('#orderContainer.boxes.order_of_day > div').css('background-image','url(\"http://dl.dropbox.com/u/68604040/EREP/boxes_v2.png\")');
+		$('#menuText > ul > li#menu5 > ul').append(
 			'<li><a href=\"http://www.erepublik.com/en/newspaper/president-of-eukraine-242674/1/" target="_blank">Президент єУкраїни</a></li>'+
+			'<li><a href=\"http://www.erepublik.com/en/newspaper/pm-press-centre-202726/1/" target="_blank">Прем`єр-міністр єУкраїни</a></li>'+
 			'<li><a href=\"http://www.erepublik.com/en/newspaper/education-of-eukraine-271249/1/" target="_blank">Міністерство Освіти</a></li>'+
 			'<li><a href=\"http://www.erepublik.com/en/newspaper/diplomacy-of-eukraine-192017/1/" target="_blank">Міністерство Зовнішніх Справ</a></li>'+
 			'<li><a href=\"http://www.erepublik.com/en/newspaper/demography-news-240441/1/" target="_blank">Міністерство Демографії</a></li>'+
-			'<li><a href=\"http://www.erepublik.com/en/newspaper/president-of-eukraine-242674/1/" target="_blank">Президент єУкраїни</a></li>'+
-			'<li><a href=\"http://www.erepublik.com/en/newspaper/the-ministry-of-culture-188570/1/" target="_blank">Міністерство Культури</a></li>'+
-			'<li><a href=\"http://www.erepublik.com/en/newspaper/national-news-ukraine-202889/1/" target="_blank">Національна Служба Новин</a></li>'+
-			'<li><a href=\"http://forum.erepublik.com.ua/" target="_blank">Форум української спільноти</a></li>'+
-			'<li><a href=\"http://wiki.erepublik.com/index.php/Missions/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B0" target="_blank">Місії</a></li>');
+			'<li><a href=\"http://www.erepublik.com/en/newspaper/ukrainian-economy-184603/1/" target="_blank">Міністерство Економіки</a></li>'+
+			'<li><a href=\"http://www.erepublik.com/en/article/-gov-2012-2054330/1/20/" target="_blank">Міністерство Культури</a></li>'+
+			'<li><a href=\"http://www.erepublik.com/en/newspaper/national-news-ukraine-202889/1/" target="_blank">Міністерство Дезінформації</a></li>'+
+			'<li><a href=\"http://www.erepublik.com/en/newspaper/sawmill-269433/1/" target="_blank">Газета CBAPTOR</a></li>'+
+			'<li><a href=\"http://wiki.erepublik.com/index.php/Missions/%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%81%D1%8C%D0%BA%D0%B0" target="_blank">Список місій</a></li>');
 		// sidebar
 		var Explevel = $('#experienceTooltip > strong').eq(0).text();
 		var Exppoint = $('#experienceTooltip > strong').eq(1).text();
@@ -113,15 +127,15 @@ if ($("body").attr("id")=="error"){
 		$('a.next').text('Вперед');
 		// footer
 		$('#footer > p > a:eq(0)').text('Форум');
-		//$('#footer > p > a:eq(1)').text('wiki');
-		$('#footer > p > a:eq(2)').text('Блог');
-		$('#footer > p > a:eq(3)').text('Офіційний блог');
-		$('#footer > p > a:eq(4)').text('Зв`язок з адмінами');
-		$('#footer > p > a:eq(5)').text('Вакансії');
-		$('#footer > p > a:eq(6)').text('Умови надання послуг');
-		$('#footer > p > a:eq(7)').text('Політика конфіденційності');
-		$('#footer > p > a:eq(8)').text('Співпраця');
-		$('#footer > p > a:eq(9)').text('Правила гри');
+		$('#footer > p > a:eq(1)').text('Блог');
+		$('#footer > p > a:eq(2)').text('ЗМІ про нас');
+		$('#footer > p > a:eq(3)').text('Зв`язок з адмінами');
+		$('#footer > p > a:eq(4)').text('Вакансії');
+		$('#footer > p > a:eq(5)').text('Умови надання послуг');
+		$('#footer > p > a:eq(6)').text('Політика конфіденційності');
+		$('#footer > p > a:eq(7)').text('Співпраця');
+		$('#footer > p > a:eq(8)').text('Правила гри');
+		//$('#footer > p > a:eq(9)').text('Правила гри');
 	//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/	
 	// www.erepublik.com
 	//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
@@ -135,13 +149,19 @@ if ($("body").attr("id")=="error"){
 			$('#daily_pop > h3').css('font-family','Arial,Arial');
 			// daily order
 			$('#orderContainer > h1').text('Щоденний наказ');
+			$('#orderContainer.boxes.order_of_day > div').css('background-image','url(\"http://dl.dropbox.com/u/68604040/EREP/boxes_v2.png\")');
 			$('#orderContainer > div > strong').text($('#orderContainer > div > strong').text().replace('Fight for','Боріться за ')+'. Вбито ворожих солдат:');
 			$('#orderContainer > div > a.blue_beauty').text('До битви');
 			$('#orderContainer > div > a.green_beauty').text('Винагорода');
 			$(".wcontent h3").text("Щоденний наказ виконано");
-			$(".wcontent a").text("Отримати бонус");
-			$(".wcontent #result_salary small").text("Різних частин базуки");
+			$(".wcontent p").text("Працюйте та тренуйтеся 5 днів підряд, та отримайте бонус!");
+			$(".wcontent .day_tasks > em").each(function (index) {
+				this.replaceText('Day','День');
+			});
+			$(".wcontent a").text("Отримати винагороду");
+			$(".wcontent #result_salary small").text("Різних частин РПГ");
 			$(".wcontent #result_products small").text("Батончик");
+			$(".wcontent .building").attr("src","https://dl.dropbox.com/u/68604040/EREP/daily_order.png")
 			// daily task
 			$('.column > .boxes.daily_tasks > h1').text('Щоденні дії');
 			$('.column > .boxes.daily_tasks > div > strong').text('Працюйте та тренуйтеся');
@@ -154,7 +174,7 @@ if ($("body").attr("id")=="error"){
 			$('#daily_pop small:eq(1)').text('досвіду');
 			$('#daily_pop > a').text('та');
 			// battle list
-			$('#homepage_feed .column:eq(0) > h1.noborder').text('Головні битви');
+			$('#homepage_feed .column > h1.noborder:eq(0)').text('Головні події');
 			$("#battle_listing > h4:exact('Campaign of the day')").text('Битва дня');
 			$("#battle_listing > h4:contains('Allies')").text('Битви за союзників');
 			$("#battle_listing > h4:contains('Campaigns')").text('Поточні битви '+$("#battle_listing > h4:contains('Campaigns')").replaceText('Campaigns',' ').text());
@@ -163,6 +183,8 @@ if ($("body").attr("id")=="error"){
 			$('#battle_listing .rest > a:eq(1)').text('Останні події');
 			$('#battle_listing > ul.resistance_war').find('a#fundRW_btn > span').text('Допомогти');
 			$('#battle_listing > ul.resistance_war').find('.info > small').text('Повстання в');
+			// top news
+			$('#homepage_feed .column > h1.noborder:eq(1)').text('Новини преси');
 			// citizen feed
 			$('#wall_master > h1').text('Новини');
 			$("li#show_friends_feed > a").text("Друзі");
@@ -227,7 +249,7 @@ if ($("body").attr("id")=="error"){
 				$('#work_results .details_holder ul > li:eq(0)').attr("title","Залишилось працювати днів, щоб отримати медаль Сумлінного Працівника");	
 				$('#work_results .details_holder ul > li:eq(1)').attr("title","Відпрацьовано днів підряд");
 				$('#work_results .details_holder ul > li:eq(2)').attr("title","Отримано балів досвіду");
-				$('#work_results .details_holder ul > li:eq(3)').attr("title","Витрачено здоров'я");	
+				$('#work_results .details_holder ul > li:eq(3)').attr("title","Витрачено здоров`я");	
 				$('#work_results .salary_tooltip h4').text("Деталі про заробітну плату");
 				$('#work_results .salary_tooltip ul > li:eq(0)').text("Платня");
 				$('#work_results .salary_tooltip ul > li:eq(1)').text("Податок");
@@ -297,7 +319,7 @@ if ($("body").attr("id")=="error"){
 				$("h4").text("Тренувальні майданчики");
 				$(".c1 > strong").text("Майданчики");
 				$(".grey_plastic.left_pos").attr("title","Збудувати нові майданчики");
-				$(".grey_plastic.right_pos").attr("title","Покращити/понизити маданчики");
+				$(".grey_plastic.right_pos").attr("title","Покращити майданчики");
 				$(".heading > .c2 > strong").text("Тренуватися");
 				$(".heading > .c3 > strong").text("Ціна");
 				$(".heading > .c4 > strong").text("Отримаєш сили");
@@ -314,7 +336,7 @@ if ($("body").attr("id")=="error"){
 				$("#train_results .fixer > .inner > .details_holder > div > p").text("Бонус Природного ворога та бонус друзів більше не діють");
 				$("#train_results .fixer > .inner > .hard_worker > p").replaceText("You need an additional","Необхідно ще ").replaceText("to get the Super Soldier Medal.",", щоб отримати медаль Котигорошка.");
 				$("#train_results .fixer > .inner > .hard_worker > p > span").replaceText("strength points","сили");
-				$("#train_results .fixer > .inner > a").text("Деталі").attr("Показати деталі");
+				$("#train_results .fixer > .inner > a > span").text("Деталі").attr("Показати деталі");
 				$("#train_results .fixer > .inner > .details_holder > div > ul > li:eq(0)").attr("title","Зараз сили");
 				$("#train_results .fixer > .inner > .details_holder > div > ul > li:eq(1)").attr("title","Досвід");
 				$("#train_results .fixer > .inner > .details_holder > div > ul > li:eq(2)").attr("title","Витрачено здоров'я");
@@ -341,7 +363,7 @@ if ($("body").attr("id")=="error"){
 				$(".collection_list > ul > li:[title='M6A3 Rocket']").attr('title','Ракета');
 				$(".collection_list > ul > li:[title='Trigger Kit']").attr('title','Спусковий модуль');
 				$(".collection_list > ul > li:[title='Stock']").attr('title','Приклад');
-				$('.collection_list > a.assemble').text('Скласти').attr('title','Скласти');
+				$('.collection_list > a.assemble > span').text('Скласти').attr('title','Скласти');
 				$('.collection_list > .bazooka > .details > strong').html('РПГ'+
 					'<img src="http://www.erepublik.com/images/modules/storage/info.png" alt="" class="storage_tooltip" original-title="Ви можете знайти ці деталі на полі бою або отримати як винагороду за виконання добового наказу.">');
 				$('.collection_list > .bazooka > .details > small').text('Один постріл - один труп');
@@ -402,16 +424,16 @@ if ($("body").attr("id")=="error"){
 			} else if (location.indexOf("newspapers")!==-1) {
 				$(".info > h1").text("Кращі газети");
 				$("th:contains('Subscribers')").text("Підписники");
-				$(".info_message tbody tr td").text("Ви не є власником газети. Створіть газету, щоб пробачити деталі.");
+				$(".info_message tbody tr td").text("Ви не маєте власної газети. Створіть газету, щоб побачити деталі.");
 			} else if (location.indexOf("countries")!==-1) {
 				$(".info > h1").text("Кращі країни");
 				$("th:contains('Population')").text("Кількість населення");
 			} else if (location.indexOf("military")!==-1) {
 				$(".info > h1").text("Кращі МЮ");
-				$("th:contains('Opponents')").text("Переможено опонентів");
+				$("th:contains('Opponents')").text("Переможено ворогів");
 			} else if (location.indexOf("damage")!==-1) {
 				$(".info > h1").text("Кращі бійці");
-				$("th:contains('Name')").text("Ім'я");
+				$("th:contains('Name')").text("Ім`я");
 				$("th:contains('Country')").text("Країна");
 				$("th:contains('Total')").text("Загальний дамаг");
 				$(".simple_sub li a").replaceText("Yesterday","Вчора");
@@ -456,11 +478,11 @@ if ($("body").attr("id")=="error"){
 			$(".citizen_sidebar > .citizen_activity > div.place:eq(0) > h3:contains('Party President')").html('<img src="http://www.erepublik.com/images/modules/_icons/party_president.png">Президент партії');
 			$(".citizen_sidebar > .citizen_activity > div.place:eq(0) > h3:contains('Congress Member')").html('<img src="http://www.erepublik.com/images/modules/_icons/congress_member.png">Член Конгресу');
 			$(".citizen_sidebar > .citizen_activity > div.place:eq(0) > h3:contains('Country President')").html('<img src="http://www.erepublik.com/images/modules/_icons/country_president.png">Президент країни');
-			$(".citizen_sidebar > .citizen_activity > div.place:eq(0) > div > span > small:contains('Far-left Wing')").text('Ультра-права');
-			$(".citizen_sidebar > .citizen_activity > div.place:eq(0) > div > span > small:contains('Center-left Wing')").text('Ліво-центристська');
+			$(".citizen_sidebar > .citizen_activity > div.place:eq(0) > div > span > small:contains('Far-left Wing')").text('Ультраправа');
+			$(".citizen_sidebar > .citizen_activity > div.place:eq(0) > div > span > small:contains('Center-left Wing')").text('Лівоцентристська');
 			$(".citizen_sidebar > .citizen_activity > div.place:eq(0) > div > span > small:contains('Center Wing')").text('Центристська');
-			$(".citizen_sidebar > .citizen_activity > div.place:eq(0) > div > span > small:contains('Center-right Wing')").text('Право-центристська');
-			$(".citizen_sidebar > .citizen_activity > div.place:eq(0) > div > span > small:contains('Far-right Wing')").text('Ультра-права');
+			$(".citizen_sidebar > .citizen_activity > div.place:eq(0) > div > span > small:contains('Center-right Wing')").text('Правоцентристська');
+			$(".citizen_sidebar > .citizen_activity > div.place:eq(0) > div > span > small:contains('Far-right Wing')").text('Ультраправа');
 			$('.citizen_sidebar > .citizen_activity > div.place:eq(1) > h3.noactivity').html('<img src="http://www.erepublik.com/images/modules/_icons/no_mu.png">Цивільний');
 			$(".citizen_sidebar > .citizen_activity > div.place:eq(1) > h3:contains('Recruit')").html('<img src="http://www.erepublik.com/images/modules/_icons/mu.png">Рекрут');
 			$(".citizen_sidebar > .citizen_activity > div.place:eq(1) > h3:contains('Member')").html('<img src="http://www.erepublik.com/images/modules/_icons/mu.png">Боєць');
@@ -499,21 +521,21 @@ if ($("body").attr("id")=="error"){
 			$("ul#achievment > li:eq(6) > .hinter > span > p:eq(1)").text("Почни повстання, що закінчиться звільненням регіону");
 			$("ul#achievment > li:eq(7) > .hinter > span > p:eq(0) > strong").text("Котигорошко (СС)");
 			$("ul#achievment > li:eq(7) > .hinter > span > p:eq(1)").text("Натренуй 250 сили");
-			$("ul#achievment > li:eq(8) > .hinter > span > p:eq(0) > strong").text("Соціальний будівельник");
+			$("ul#achievment > li:eq(8) > .hinter > span > p:eq(0) > strong").text("Ботовод");
 			$("ul#achievment > li:eq(8) > .hinter > span > p:eq(1)").text("Запроси 10 гравців і допоможи їм досягнути 10 рівня");
 			$("ul#achievment > li:eq(9) > .hinter > span > p:eq(0) > strong").text("Найманець");
 			$("ul#achievment > li:eq(9) > .hinter > span > p:eq(1)").text("Вбий 25 ворогів за кожну з представлених нижче 50-ти країн");
 			// military skill
-			$(".citizen_content > h3:contains('Military Skills')").html('<br><br><br><br><br>Військові навички');
+			$(".citizen_content > h3:contains('Military Attributes')").html('<br><br><br><br><br>Військові навички');
 			$('.citizen_content > .citizen_military:eq(0) > strong:first').text('Сила');
-			$('.citizen_content > .citizen_military:eq(0) > div > small:first').replaceText('Super soldier:','Котигорошко:');
+			$('.citizen_content > .citizen_military:eq(0) > div > small:first').replaceText('Super Soldier:','Котигорошко:');
 			$('.citizen_content > .citizen_military:eq(1) > strong:first').text('Звання');
 			$('.citizen_content > .citizen_military:eq(1) > div > small:first').text('Військовий досвід:');
 			if (location.indexOf("/economy/")!==-1) {
 				if (location.indexOf("/donate-")!==-1) {
 					// donate tab
 					$('.citizen_content > div > h2.special.padded').replaceText('Donate','Відправити');
-					$('.citizen_content > div > h2.special.padded > img#donate_tip').attr('title','Тільки їжа, зброя, гроші та авіаквитки можуть бути пожертвувані.');
+					$('.citizen_content > div > h2.special.padded > img#donate_tip').attr('title','Можна дарувати лише їжу, зброю, гроші та квитки.');
 					$('.citizen_content > div > ul.tabs > li#topratedtab > a > span').text('Товари');
 					$('.citizen_content > div > ul.tabs > li#latesttab > a > span').text('Валюта');
 					$(".citizen_content > div > .donate_form > table > tbody > tr > th:contains('Your storage')").text('Ваше сховище');
@@ -523,7 +545,7 @@ if ($("body").attr("id")=="error"){
 				} else {
 					// account money tab
 					$(".citizen_content > a.fluid_blue_light_small > span:contains('Exchange currencies')").text('Обмін');
-					$("table.info_message > tbody > tr > td:exact('Local currency accounts with a value less than 1 are not displayed.')").text('Валюти, кількість яких менше одиниці, не показані.');
+					$("table.info_message > tbody > tr > td:exact('Local currency accounts with a value less than 1 are not displayed.')").text('Іноземні валюти в кількості, меншій за 1, не відображаються.');
 					$('div#allaccounts > div:first > a.f_light_blue_small > span').text('Придбати золото');
 				};
 			} else if (location.indexOf("/citizen-friends/")!==-1) {
@@ -537,9 +559,9 @@ if ($("body").attr("id")=="error"){
 				$('.citizen_sidebar > div > .citizen_second > small:eq(2)').replaceText('Forfeit points','Бали попереджень');
 				$('.citizen_content > h2.special').text('Зміна місцезнаходження');
 				$('.citizen_content > .current_location > h4').text('Поточне місцезнаходження');
-				$('.citizen_content > form > .new___location > h4').text('Нове місцезнаходження');
-				$('.citizen_content > form > .new___location > #selects > small:eq(0)').replaceText('Moving distance:','　Відстань:　');
-				$('.citizen_content > form > .new___location > #selects > small:eq(1)').replaceText('Travelling cost:','　Вартість:　');
+				$('.citizen_content > form > .new_location > h4').text('Нове місцезнаходження');
+				$('.citizen_content > form > .new_location > #selects > small:eq(0)').replaceText('Moving distance:','　Відстань:　');
+				$('.citizen_content > form > .new_location > #selects > small:eq(1)').replaceText('Travelling cost:','　Вартість:　');
 				$('.citizen_content > form > a#move > span').text('Переїхати');
 			} else if (location.indexOf("/change-password")!==-1) {
 				// change password tab
@@ -578,7 +600,7 @@ if ($("body").attr("id")=="error"){
 			//! www.erepublik.com/en/exchange
 			// Exchange
 			$('h1').css('font-family','Arial,Arial');
-			$("h1:contains('Monetary Market')").text('Валютний ринок');
+			$("h1:contains('Monetary market')").text('Валютний ринок');
 			//exchange_bar
 			$("#sell_flag > span").text('Придбати:');
 			$("a#change_currency.lighty.icon").attr("title","Обміняти місцями");
@@ -688,9 +710,9 @@ if ($("body").attr("id")=="error"){
 				$('#battle_loader > a.green_go').replaceText('Next battle','Наступний раунд');
 				$('#battle_end > a.green_go').text('Переглянути інші битви');
 				$('#collection_complete.bazooka_pop > strong').text('Агов, та ти ж зібрав брухту на РПГ!');
-				$("#collection_complete.bazooka_pop > a[title='Скласти РПГ']").text('Зібрати');
+				$("#collection_complete.bazooka_pop > a[title='Build your Bazooka!']").text('Скласти');
 				$("#timer > div > strong:contains('Are you')").text('Не заснув?');
-				$("#timer > div > a > span:contains('still here')").text('Я тут...тут...ХРРР...ХРРР');
+				$("#timer > div > a > span:contains('still here')").text('Я тут...тут...хрРР...ХРРР');
 				// change location
 				$('#options_box > p.info').text('Вам потрібно переїхати в одну з країн для участі в битві. Зробити це зараз?');
 				$('#options_box > a#change_location.fluid_blue_dark > span').text('Так, звісно!');
@@ -733,12 +755,12 @@ if ($("body").attr("id")=="error"){
 			$("h1:first:exact('Political debates and analysis News')").text('Політичні дебати');
 			$("h1:first:exact('Financial business News')").text('Економіка та фінанси');
 			$("h1:first:exact('Social interactions and entertainment News')").text('Новини суспільства');
-			$('#filters > .rightfilters > .core > ul.new__s_filters > li:eq(0) > a').attr('title','Нові інструкції та освіта');
-			$('#filters > .rightfilters > .core > ul.new__s_filters > li:eq(1) > a').attr('title','Повідомлення військового командування');
-			$('#filters > .rightfilters > .core > ul.new__s_filters > li:eq(2) > a').attr('title','Стратегічний аналіз');
-			$('#filters > .rightfilters > .core > ul.new__s_filters > li:eq(3) > a').attr('title','Політичні обговорення та їх аналіз');
-			$('#filters > .rightfilters > .core > ul.new__s_filters > li:eq(4) > a').attr('title','Економічний фокус');
-			$('#filters > .rightfilters > .core > ul.new__s_filters > li:eq(5) > a').attr('title','Соціальні розваги');
+			$('#filters > .rightfilters > .core > ul.new_s_filters > li:eq(0) > a').attr('title','Нові інструкції та освіта');
+			$('#filters > .rightfilters > .core > ul.new_s_filters > li:eq(1) > a').attr('title','Повідомлення військового командування');
+			$('#filters > .rightfilters > .core > ul.new_s_filters > li:eq(2) > a').attr('title','Стратегічний аналіз');
+			$('#filters > .rightfilters > .core > ul.new_s_filters > li:eq(3) > a').attr('title','Політичні обговорення та їх аналіз');
+			$('#filters > .rightfilters > .core > ul.new_s_filters > li:eq(4) > a').attr('title','Економічний фокус');
+			$('#filters > .rightfilters > .core > ul.new_s_filters > li:eq(5) > a').attr('title','Соціальні розваги');
 			$('#filters > .rightfilters > .core > .your_subs').html('</br>Ви в даний час підписані на <strong>'+$("#filters > .rightfilters > .core > .your_subs > strong").text()+'</strong> газет<a href="javascript:;" class="fluid_blue_dark" onclick="$j(\'.asubs\').toggle();" title=""><span>Змінити</span></a>');
 			$('#filters > .rightfilters > .asubs > .acontrols > a.aselectall').text('Обрати всі');
 			$('#filters > .rightfilters > .asubs > .acontrols > a#unsubscribeAction > span').text('Відписатися');
@@ -758,7 +780,7 @@ if ($("body").attr("id")=="error"){
 			$("a:contains('Social interactions and entertainment')").html('<img src="http://www.erepublik.com/images/modules/news/icons/cat_5.png"> Новини суспільства');
 		} else if ((location.indexOf("/article/")!==-1) || (location.indexOf("/newspaper/")!==-1)) {
 			// newspaper, article
-			$('body#newspaper > #container > #content > h2.new__spaper_section').text('про це пише газета');
+			$('body#newspaper > #container > #content > h2.new_spaper_section').text('про це пише газета');
 			$('.profilemenu > li > a.houdini.subscribeToNewspaper').text('Підписатися');
 			$('.profilemenu > li > a.houdini.unsubscribeFromNewspaper').text('Відписатися');
 			$(".profilemenu > li > a:exact('Write article')").text('Написати статтю');
@@ -774,7 +796,7 @@ if ($("body").attr("id")=="error"){
 			$('a#comments_button_on > span').replaceText('Comments','Коментарі');
 			$('#subscribe_comments > form > .submitpost-start > .submitpost-core > p.padded').text('Ваше повідомлення');
 			$("#subscribe_comments > form > .submitpost-start > .submitpost-core > input.submit[name='commit']").attr('value','Додати повідомлення');
-			$('a.report.new__spaper').text('доповіді цієї газети');
+			$('a.report.new_spaper').text('доповіді цієї газети');
 			$('a.report.articlereport').text('Повідомити про цю статтю');
 			$('a.shower.report.commentswitch').text('Поскаржитися на коментарі');
 			$('a.report.onz.commentcontent').text('Поскаржитися');
@@ -1039,7 +1061,8 @@ if ($("body").attr("id")=="error"){
 				};
 			};
 		};
-		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
+		$("#show_facebook_feed").css("display","none");
+//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 		// www.erepublik.com/en/main/country/
 		//-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 		if ((location.indexOf("/country")!==-1) || (location.indexOf("/law/")!==-1)) {
@@ -1096,14 +1119,22 @@ if ($("body").attr("id")=="error"){
 				$("th:exact('Import Tax')").text("Імпортне мито");
 				$("th:exact('VAT')").text("ПДВ");
 				$("span.fakeheight:exact('Food')").text("Їжа");
-				$("span.fakeheight:exact('Weapons')").text("Зброя");
-				$("span.fakeheight:exact('House')").text("Будинки");
-				$("span.fakeheight:exact('Moving Tickets')").text("Квитки");
-				$("span.fakeheight:exact('Food Raw Material')").text("Зерно");
-				$("span.fakeheight:exact('Weapon Raw Material')").text("Залізо");
-				$("span.fakeheight:exact('Hospital')").text("Шпиталі");
-				$("span.fakeheight:exact('Defense System')").text("Захисні системи");
-				$("h2:exact('Salary')").text("Мінімальна ЗП");
+
+ 				$("span.fakeheight:exact('Weapons')").text("Зброя");
+
+        $("span.fakeheight:exact('House')").text("Будинки");
+
+        $("span.fakeheight:exact('Moving Tickets')").text("Квитки");
+
+        $("span.fakeheight:exact('Food Raw Material')").text("Зерно");
+
+        $("span.fakeheight:exact('Weapon Raw Material')").text("Залізо");
+
+       $("span.fakeheight:exact('Hospital')").text("Шпиталі");
+
+        $("span.fakeheight:exact('Defense System')").text("Захисні системи");
+
+$("h2:exact('Salary')").text("Мінімальна ЗП");
 				$("span.fakeheight:exact('Minimum')").text("Мінімальна");
 				$("span.fakeheight:exact('Average')").text("Середня");
 				$("h2:exact('Info')").text("Деталі");
@@ -1209,8 +1240,8 @@ if ($("body").attr("id")=="error"){
 			$(".product_selector > ul > li > a[title='Weapons'] > strong").text('Зброя');
 			$(".product_selector > ul > li > a[title='House'] > strong").text('Будинки');
 			$(".product_selector > ul > li > a[title='Moving Tickets'] > strong").text('Квитки');
-			$(".product_selector > ul > li > a[title='Food Raw Material'] > strong").text('Зерно');
-			$(".product_selector > ul > li > a[title='Weapon Raw Material'] > strong").text('Залізо');
+			$(".product_selector > ul > li > a[title='Food Raw Materials'] > strong").text('Зерно');
+			$(".product_selector > ul > li > a[title='Weapon Raw Materials'] > strong").text('Залізо');
 			$(".product_selector > ul > li > a[title='Hospital'] > strong").text('Шпиталі');
 			$(".product_selector > ul > li > a[title='Defense System'] > strong").text('Системи захисту');
 			$(".product_selector > ul > li.last > a > strong").text('Підприємства');
@@ -1264,11 +1295,11 @@ if ($("body").attr("id")=="error"){
 			// create company
 			$('h1:first').text('Заснувати');
 			$('.create_building > h3:first').text('Оберіть тип');
-			$(".create_links > a[title='Food raw materials'] > span").text('Зерно');
-			$(".create_links > a[title='Weapon raw materials'] > span").text('Залізо');
+			$(".create_links > a[title='Food Raw Materials'] > span").text('Зерно');
+			$(".create_links > a[title='Weapon Raw Materials'] > span").text('Залізо');
 			$(".create_links > a[title='Factories'] > span").text('Фабрики');
 			$(".create_links > a[title='Storage'] > span").text('Склад');
-			$(".create_links > a[title='Training Facilities'] > span").text('Тренувальні будівлі');
+			$(".create_links > a[title='Training grounds'] > span").text('Тренувальні майданчики');
 			$('.create_building > h3#second_title').text('Оберіть будівлю');
 			$('ul.buildings > li.food:eq(0) > a > strong').text('Зернова ферма');
 			$('ul.buildings > li.food:eq(1) > a > strong').text('Фруктовий сад');
